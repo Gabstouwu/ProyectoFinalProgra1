@@ -1,5 +1,5 @@
 package modelo;
 
 public class Viaje {
-    //aaa
+    //Andy es un ricooo
 }
