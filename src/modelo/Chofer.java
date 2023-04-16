@@ -2,5 +2,5 @@
 package modelo;
 
 public class Chofer {
-    //tft
+    //andy inutil
 }
