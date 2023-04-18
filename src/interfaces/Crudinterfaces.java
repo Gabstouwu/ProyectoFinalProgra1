@@ -9,9 +9,5 @@ public interface Crudinterfaces {
     public void editar();
 
     public void eliminar();
-    
-    public void validar();
-    
-    public void informe();
 
 }
