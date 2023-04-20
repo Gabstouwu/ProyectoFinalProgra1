@@ -4,13 +4,14 @@ public class Persona {
     private String idPersona;
     private String nombrePersona;
     private String telefonoPersona;
-    private String correo;
-
+    private String correoPersona;
+    public Persona(){
+}
     public Persona(String idPersona, String nombrePersona, String telefonoPersona, String correo) {
         this.idPersona = idPersona;
         this.nombrePersona = nombrePersona;
         this.telefonoPersona = telefonoPersona;
-        this.correo = correo;
+        this.correoPersona = correo;
     }
 
     public String getIdPersona() {
@@ -38,16 +39,16 @@ public class Persona {
     }
 
     public String getCorreo() {
-        return correo;
+        return correoPersona;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String correoPersona) {
+        this.correoPersona = correoPersona;
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", nombrePersona=" + nombrePersona + ", telefonoPersona=" + telefonoPersona + ", correo=" + correo + '}';
+        return "Persona{" + "idPersona=" + idPersona + ", nombrePersona=" + nombrePersona + ", telefonoPersona=" + telefonoPersona + ", correo=" + correoPersona + '}';
     }
     
 }
