@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class Metodos {
 
     public void msg(String msg) {
-        JOptionPane.showMessageDialog(null, msg);
+        JOptionPane.showMessageDialog(null,msg);
     }
 
     public int SIoNo(String msg, String titulo) {
@@ -24,5 +24,9 @@ public class Metodos {
     public String getCadena(String msg) {
         String cadena = JOptionPane.showInputDialog(msg);
         return cadena;
+    }
+    public int getEntero(String msg){
+        int entero = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        return entero;
     }
 }
