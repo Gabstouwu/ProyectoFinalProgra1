@@ -8,42 +8,49 @@ import view.PersonaView;
 public class PersonaController implements Crudinterfaces {
 
     public static ArrayList<Persona> lista_Persona = new ArrayList();
-    PersonaView persona = new PersonaView();
+
     Metodos m = new Metodos();
-    Persona crearPersona = new Persona();
 
     @Override
     public void registrar() {
-        
-        
-        
-
+        Persona crearPersona = new Persona();
         try {
-           String id = PersonaView.id ;
-           persona.crearPersona();
-           
-           String nombre = PersonaView.nombre ;
-           String numero =  PersonaView.numero;
-           String correo = PersonaView.correo ;
-            for (int i = 0; i < lista_Persona.size(); i++) {
-                if (lista_Persona.get(i).getIdPersona() != id) {
-                    m.msg(id);
-                    crearPersona.setIdPersona(id);
-                    crearPersona.setNombrePersona(nombre);
-                    crearPersona.setTelefonoPersona(numero);
-                    crearPersona.setCorreo(correo);
-                    lista_Persona.add(crearPersona);
-                    
-                    System.out.println(lista_Persona);
-                    break;
-                    
-                }
 
+            PersonaView persona = new PersonaView();
+            persona.crearPersona();
+            String id = persona.id;
+            String nombre = persona.nombre;
+            String numero = persona.numero;
+            String correo = persona.correo;
+            if (lista_Persona.size() <= 0) {
+                crearPersona.setIdPersona(id);
+                crearPersona.setNombrePersona(nombre);
+                crearPersona.setTelefonoPersona(numero);
+                crearPersona.setCorreo(correo);
+                lista_Persona.add(crearPersona);
+                System.out.println(lista_Persona);
+            } else {
+                for (int i = 0; i <= lista_Persona.size(); i++) {
+                    if (lista_Persona.get(i).getIdPersona().equals(id)) {
+                        m.msg("Id ya existente, ingrese una persona nueva");
+
+                    } else {
+
+                        crearPersona.setIdPersona(id);
+                        crearPersona.setNombrePersona(nombre);
+                        crearPersona.setTelefonoPersona(numero);
+                        crearPersona.setCorreo(correo);
+                        lista_Persona.add(crearPersona);
+
+                        System.out.println(lista_Persona);
+
+                    }
+                    break;
+                }
             }
         } catch (Exception e) {
-            m.msg("Id ya existente, ingrese una persona nueva");
-        }
 
+        }
     }
 
     @Override
