@@ -1,6 +1,7 @@
 package modelo;
 
 public class Usuario {
+
     private String IdUsuario;
     private String CodigoUsuario;
     private String ClaveUsuario;
@@ -10,7 +11,7 @@ public class Usuario {
         this.CodigoUsuario = CodigoUsuario;
         this.ClaveUsuario = ClaveUsuario;
     }
-    
+
     public String getIdUsuario() {
         return IdUsuario;
     }
@@ -39,6 +40,5 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "IdUsuario=" + IdUsuario + ", CodigoUsuario=" + CodigoUsuario + ", ClaveUsuario=" + ClaveUsuario + '}';
     }
-    
-    
+
 }
