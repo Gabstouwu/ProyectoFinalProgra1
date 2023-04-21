@@ -1,17 +1,49 @@
 package controller;
 
+import static controller.PersonaController.lista_Persona;
 import interfaces.Crudinterfaces;
 import java.util.ArrayList;
 import modelo.Vehiculo;
+import view.VehiculoView;
 
 public class VehiculoController implements Crudinterfaces {
 
-    public Metodos m = new Metodos();
-
-    public static ArrayList<Vehiculo> lista_V = new ArrayList<>();
+    public static ArrayList<Vehiculo> lista_V = new ArrayList();
+    VehiculoView vehiculo = new VehiculoView();
+    Metodos m = new Metodos();
+    Vehiculo crearVehiculo = new Vehiculo();
 
     @Override
     public void registrar() {
+try {
+           String id = VehiculoView.numeroPlaca ;
+           vehiculo.crearVehiculo();
+           
+           String placa = VehiculoView.numeroPlaca ;
+           String marca =  VehiculoView.marca;
+           String estilo = VehiculoView.estilo ;
+           String modelo =  VehiculoView.modelo;
+           String capacidad = VehiculoView.capacidad ;
+           
+            for (int i = 0; i < lista_V.size(); i++) {
+                if (lista_V.get(i).getPlaca()!= id) {
+                    m.msg(id);
+                    crearVehiculo.setPlaca(placa);
+                    crearVehiculo.setMarca(marca);
+                    crearVehiculo.setEstilo(estilo);
+                    crearVehiculo.setModelo(modelo);
+                    crearVehiculo.setCapacidadPasajeros(capacidad);
+                    lista_V.add(crearVehiculo);
+                    
+                    System.out.println(lista_V);
+                    break;
+                    
+                }
+
+            }
+        } catch (Exception e) {
+            m.msg("Id ya existente, ingrese una persona nueva");
+        }
 
     }
 
