@@ -5,11 +5,11 @@ import controller.Metodos;
 import controller.PersonaController;
 public class PersonaView {
 
-    public static String id ;
-    public static String numero;
-    public static String correo;
-    public static String nombre;
-    Metodos m = new Metodos();
+    public String id ;
+    public String numero;
+    public String correo;
+    public String nombre;
+    static Metodos m = new Metodos();
     
     public void MenuPersonas() {
     PersonaController personas = new PersonaController();
