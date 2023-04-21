@@ -1,12 +1,14 @@
 package main;
 import controller.Metodos;
 import view.PersonaView;
+import view.VehiculoView;
 import controller.PersonaController;
 public class MenuPrincipal {
 
     public static void main(String[] args) {
         Metodos m = new Metodos();
         PersonaView persona = new PersonaView();
+        VehiculoView vehiculo = new VehiculoView();
         PersonaController personaC = new PersonaController();
         int opcion;
          do {
@@ -14,7 +16,7 @@ public class MenuPrincipal {
                opcion = m.getEntero(
                         "MENU PRNCIPAL\n"
                         + "1. Personas\n"
-                        + "2. Registro de personas\n"
+                        + "2. Vehiculo\n"
                         + "3. Ventas\n"
                         + "4. Salir\n"
                         + "Elija una opción:");
@@ -28,7 +30,7 @@ public class MenuPrincipal {
                     //personaC.registrar();
                     break;
                 case 2:
-                    
+                    vehiculo.MenuVehiculo();
                     break;
                 case 3:
                   
