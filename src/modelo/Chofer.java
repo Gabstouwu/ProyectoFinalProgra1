@@ -4,6 +4,9 @@ public class Chofer {
     private String idPersona;
     private String vencimientoLicencia;
 
+    public Chofer() {
+    }
+
     public Chofer(String idPersona, String vencimientoLicencia) {
         this.idPersona = idPersona;
         this.vencimientoLicencia = vencimientoLicencia;
