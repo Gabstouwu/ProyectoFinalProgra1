@@ -19,7 +19,7 @@ public class PersonaView {
         int opcion;
         String[] opciones = {"Registrar", "Consultar", "Editar", "Elmininar", "Salir"};
         while (decision == true) {
-            opcion = m.menuBotones("Elija una Opcion", "Elija una opcion:", opciones, "Crear");
+            opcion = m.menuBotones("Elija una Opcion", "Elija una opcion:", opciones, "Registrar");
             switch (opcion) {
                 case 0:
                     personas.registrar();
@@ -56,8 +56,6 @@ public class PersonaView {
 
     public void consultarPersona(int id) {
         
-        
-       
     }
 
     public void editarPersona() {

@@ -48,50 +48,44 @@ public class PersonaController {
     }
 
     public void consultar() {
-        
+
         if (lista_Persona.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
             PersonaView persona = new PersonaView();
             persona.Id();
             String id = persona.id;
-            if (existe(id)) {
-                for (int i = 0; i < lista_Persona.size(); i++) {
-                    if (lista_Persona.get(i).getIdPersona().equals(id)) {
-                        
-                        m.msg(lista_Persona.get(i).toString());
-                        break;
-                    }
-                }
+            if (existe(id) && posicion(id) < lista_Persona.size()) {
+
+                m.msg(lista_Persona.get(posicion(id)).toString());
 
             } else {
                 m.msg("Persona no existe");
             }
         }
-        
+
     }
 
     public void editar() {
         if (lista_Persona.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
-            
+
             PersonaView persona = new PersonaView();
             persona.Id();
             String id = persona.id;
-           
-                
-                    if (existe(id) && posicion(id)< lista_Persona.size()) {
-                        persona.editarPersona();
-                        lista_Persona.get(posicion(id)).setNombrePersona(persona.nombre);
-                        lista_Persona.get(posicion(id)).setTelefonoPersona(persona.numero);
-                        lista_Persona.get(posicion(id)).setCorreo(persona.correo);
-                        m.msg("Modificación realizada con exito.");
-                        
-                } else {
-                        m.msg("No existe el numero de id");
-                    }
-            
+
+            if (existe(id) && posicion(id) < lista_Persona.size()) {
+                persona.editarPersona();
+                lista_Persona.get(posicion(id)).setNombrePersona(persona.nombre);
+                lista_Persona.get(posicion(id)).setTelefonoPersona(persona.numero);
+                lista_Persona.get(posicion(id)).setCorreo(persona.correo);
+                m.msg("Modificación realizada con exito.");
+
+            } else {
+                m.msg("No existe el numero de id");
+            }
+
         }
     }
 
@@ -106,8 +100,8 @@ public class PersonaController {
 
                 lista_Persona.remove(posicion(id));
                 m.msg("Persona Eliminada" + lista_Persona.toString());
-            }else{
-            m.msg("Persona no existe");
+            } else {
+                m.msg("Persona no existe");
             }
         }
 
