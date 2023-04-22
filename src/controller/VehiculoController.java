@@ -1,19 +1,17 @@
 package controller;
 
-//import interfaces.Crudinterfaces;
 import java.util.ArrayList;
 import modelo.Vehiculo;
 import view.VehiculoView;
 import controller.Metodos;
 
-public class VehiculoController { //implements Crudinterfaces {
+public class VehiculoController { 
 
     public static ArrayList<Vehiculo> lista_V = new ArrayList();
 
     Metodos m = new Metodos();
     Vehiculo crearVehiculo = new Vehiculo();
 
-    //@Override
     public void registrar() {
         Vehiculo crearVehiculo = new Vehiculo();
         try {
@@ -37,50 +35,61 @@ public class VehiculoController { //implements Crudinterfaces {
             } else {
                 if (existe(placa)) {
                     m.msg("Id ya existente, ingrese un Vehiculo nuevo");
-                }else{
+                } else {
                     crearVehiculo.setPlaca(placa);
-                crearVehiculo.setMarca(marca);
-                crearVehiculo.setEstilo(estilo);
-                crearVehiculo.setModelo(modelo);
-                crearVehiculo.setCapacidadVehiculo(capacidad);
-                lista_V.add(crearVehiculo);
-                System.out.println(lista_V);
+                    crearVehiculo.setMarca(marca);
+                    crearVehiculo.setEstilo(estilo);
+                    crearVehiculo.setModelo(modelo);
+                    crearVehiculo.setCapacidadVehiculo(capacidad);
+                    lista_V.add(crearVehiculo);
+                    System.out.println(lista_V);
                 }
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
+        }
     }
-}
 
-//@Override
-public void editar() {
-      if (lista_V.isEmpty()) {
+    public void editar() {
+        if (lista_V.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
             VehiculoView vehiculo = new VehiculoView();
-            vehiculo.editar();
+            vehiculo.Placa();
             String placa = vehiculo.numeroPlaca;
-            
+
+            if (existe(placa) && posicion(placa) < lista_V.size()) {
+                vehiculo.editar();
+                lista_V.get(posicion(placa)).setPlaca(vehiculo.numeroPlaca);
+                lista_V.get(posicion(placa)).setMarca(vehiculo.marca);
+                lista_V.get(posicion(placa)).setEstilo(vehiculo.estilo);
+                lista_V.get(posicion(placa)).setModelo(vehiculo.modelo);
+                lista_V.get(posicion(placa)).setCapacidadVehiculo(vehiculo.capacidad);
+                m.msg("Modificación realizada con exito.");
+
+            } else {
+                m.msg("No existe ese numero de placa");
+            }
         }
 
     }
 
-    //@Override
     public void eliminar() {
-       if (lista_V.isEmpty()) {
+        if (lista_V.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
             VehiculoView vehiculo = new VehiculoView();
-            vehiculo.eliminar();
+            vehiculo.Placa();
             String placa = vehiculo.numeroPlaca;
-            if (poscision(placa) < lista_V.size()) {
-               
-                    lista_V.remove(poscision(placa));
-                    m.msg("Vehiculo Eliminado de la lista."+ lista_V.toString());
+            if (existe(placa) && posicion(placa) < lista_V.size()) {
+
+                lista_V.remove(posicion(placa));
+                m.msg("Vehiculo Eliminado de la lista." + lista_V.toString());
+            } else {
+                m.msg("Numero de placa no existe");
             }
-            }
+        }
     }
 
-    // @Override
     public void consultar() {
         if (lista_V.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
@@ -101,8 +110,7 @@ public void editar() {
         }
     }
 
-    
-        public boolean existe(String id) {
+    public boolean existe(String id) {
         boolean valor = false;
         for (Vehiculo vehiculo : lista_V) {
             if (vehiculo.getPlaca().equals(id)) {
@@ -112,14 +120,14 @@ public void editar() {
 
         return valor;
     }
-        
-        public int poscision(String placa){
-    int pos=0;
-    for (Vehiculo vehiculo : lista_V) {
+
+    public int posicion(String placa) {
+        int pos = 0;
+        for (Vehiculo vehiculo : lista_V) {
             if (vehiculo.getPlaca().equals(placa)) {
                 pos = vehiculo.getPlaca().indexOf(placa);
             }
         }
-    return pos;
+        return pos;
     }
 }
