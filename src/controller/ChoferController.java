@@ -90,7 +90,7 @@ public class ChoferController {
             if (existe(id) && posicion(id) < lista_Chofer.size()) {
 
                 lista_Chofer.remove(posicion(id));
-                m.msg("Persona Eliminada" + lista_Chofer.toString());
+                m.msg("Chofer Eliminado\n" + lista_Chofer.toString());
             } else {
                 m.msg("Persona no existe");
             }
@@ -116,5 +116,15 @@ public class ChoferController {
             }
         }
         return pos;
+    }
+
+    public static void cargarDatosChofer() {
+        Chofer Chofer1 = new Chofer("123", "25/11/2020");
+        Chofer Chofer2 = new Chofer("456", "25/11/2020");
+        Chofer Chofer3 = new Chofer("456", "25/11/2020");
+        lista_Chofer.add(Chofer1);
+        lista_Chofer.add(Chofer2);
+        lista_Chofer.add(Chofer3);
+
     }
 }
