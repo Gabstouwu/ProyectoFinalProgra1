@@ -1,6 +1,8 @@
 package main;
 
+import controller.ChoferController;
 import controller.Metodos;
+import controller.PersonaController;
 import view.PersonaView;
 import view.UsuarioView;
 import view.VehiculoView;
@@ -19,10 +21,9 @@ public class MenuPrincipal {
         TiqueteController ventas = new TiqueteController();
         ChoferView choferView = new ChoferView();
         //// cargar datos preexistentes
+        PersonaController.cargarDatosPersona();
+        ChoferController.cargarDatosChofer();
         UsuarioController.CargarDatosUsuario();
-        
-        
-        
         ////Menu
         int opcion;
         do {
