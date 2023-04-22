@@ -26,7 +26,7 @@ public class PersonaController {
                 crearPersona.setTelefonoPersona(numero);
                 crearPersona.setCorreo(correo);
                 lista_Persona.add(crearPersona);
-                System.out.println(lista_Persona);
+                m.msg("Persona creada satisfactoriamente");
             } else {
                 if (existe(id)) {
                     m.msg("Id ya existente, ingrese una persona nueva");
@@ -37,7 +37,7 @@ public class PersonaController {
                     crearPersona.setTelefonoPersona(numero);
                     crearPersona.setCorreo(correo);
                     lista_Persona.add(crearPersona);
-                    System.out.println(lista_Persona);
+                    m.msg("Persona creada satisfactoriamente");
 
                 }
 
