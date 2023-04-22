@@ -5,25 +5,17 @@ public class Vehiculo {
    private String marca;
    private String estilo;
    private String modelo;
-   private String capacidadVehiculo;
+   private int capacidadVehiculo;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, String marca, String estilo, String modelo, String capacidadPasajeros) {
+    public Vehiculo(String placa, String marca, String estilo, String modelo, int capacidadVehiculo) {
         this.placa = placa;
         this.marca = marca;
         this.estilo = estilo;
         this.modelo = modelo;
-        this.capacidadVehiculo = capacidadPasajeros;
-    }
-
-    public String getCapacidadPasajeros() {
-        return capacidadVehiculo;
-    }
-
-    public void setCapacidadPasajeros(String capacidadPasajeros) {
-        this.capacidadVehiculo = capacidadPasajeros;
+        this.capacidadVehiculo = capacidadVehiculo;
     }
 
     public String getPlaca() {
@@ -58,6 +50,14 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
+    public int getCapacidadVehiculo() {
+        return capacidadVehiculo;
+    }
+
+    public void setCapacidadVehiculo(int capacidadVehiculo) {
+        this.capacidadVehiculo = capacidadVehiculo;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -66,9 +66,10 @@ public class Vehiculo {
         sb.append(", marca=").append(marca);
         sb.append(", estilo=").append(estilo);
         sb.append(", modelo=").append(modelo);
-        sb.append(", capacidadPasajeros=").append(capacidadVehiculo);
+        sb.append(", capacidadVehiculo=").append(capacidadVehiculo);
         sb.append('}');
         return sb.toString();
     }
-   
+
+    
 }
