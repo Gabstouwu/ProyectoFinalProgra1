@@ -8,6 +8,7 @@ import view.VehiculoView;
 
 import controller.TiqueteController;
 import controller.UsuarioController;
+import view.ChoferView;
 
 public class MenuPrincipal {
 
@@ -17,7 +18,7 @@ public class MenuPrincipal {
         VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
         UsuarioController usuarioController = new UsuarioController();
-        
+        ChoferView choferView = new ChoferView();
         //// cargar datos preexistentes
         usuarioController.CargarDatos();
         ////Menu
@@ -30,7 +31,8 @@ public class MenuPrincipal {
                         + "2. Vehiculo\n"
                         + "3. Ventas\n"
                         + "4. Usuario\n"
-                        + "5. Salir\n"      
+                        + "5. Chofer \n"
+                        + "6. Salir\n"      
                         + "Elija una opción:");
             } catch (Exception e) {
                 opcion = 0;
@@ -48,12 +50,16 @@ public class MenuPrincipal {
                     break;
                 case 4:
                     UsuarioView.MenuUsuario();
+                    break;
                 case 5:
+                    choferView.MenuChofer();
+                    break;
+                case 6:
                     m.msg("Gracias por usar el sistema, vuelva pronto...");
                     break;
                 default:
 
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
     }
 }
