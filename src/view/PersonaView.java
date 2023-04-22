@@ -54,7 +54,7 @@ public class PersonaView {
 
     }
 
-    public void consultarPersona(int id) {
+    public void consultarPersona() {
         
     }
 
