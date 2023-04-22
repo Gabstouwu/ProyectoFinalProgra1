@@ -2,6 +2,7 @@ package main;
 
 import controller.Metodos;
 import view.PersonaView;
+import view.UsuarioView;
 import view.VehiculoView;
 //import controller.PersonaController; Descomentar cuando se complete persona controller
 
@@ -15,10 +16,10 @@ public class MenuPrincipal {
         PersonaView persona = new PersonaView();
         VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
-        UsuarioController usuario = new UsuarioController();
+        UsuarioController usuarioController = new UsuarioController();
         
         //// cargar datos preexistentes
-        usuario.CargarDatos();
+        usuarioController.CargarDatos();
         ////Menu
         int opcion;
         do {
@@ -46,7 +47,7 @@ public class MenuPrincipal {
                     ventas.MenuTiquete();
                     break;
                 case 4:
-                    usuario.MenuUsuario();
+                    UsuarioView.MenuUsuario();
                 case 5:
                     m.msg("Gracias por usar el sistema, vuelva pronto...");
                     break;

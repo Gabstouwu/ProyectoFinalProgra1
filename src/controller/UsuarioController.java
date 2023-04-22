@@ -9,20 +9,9 @@ public class UsuarioController {//implements Crudinterfaces{
     public static ArrayList<Usuario> ListaUsuario = new ArrayList<>();
 
     //@Override
-    public void registrar(String IdUsuario, String NombreUsuario, String ClaveUsuario) {
-//        String NombreUsuario;
-//        String IdUsuario;
-//        String ClaveUsuario;
-//
-//        NombreUsuario = "Carlos";
-//        IdUsuario = "951";
-//        ClaveUsuario = "14789632";
-
+    public static void registrar(String IdUsuario, String NombreUsuario, String ClaveUsuario) {
         Usuario NuevoUsuario = new Usuario(NombreUsuario, IdUsuario, ClaveUsuario);
-
         ListaUsuario.add(NuevoUsuario);
-        System.out.println("Registro realizada con exito.");
-
     }
 
     //@Override
@@ -115,31 +104,4 @@ public class UsuarioController {//implements Crudinterfaces{
 
     }
 //submenu
-
-    public void MenuUsuario() {
-        Metodos metodos = new Metodos();
-        String[] opciones = {"Registrar Nuevo Usuario", "Modificar Usuario", "Consultar Informacion de Usuario", "Eliminar", "Volver"};
-
-        int opcion = -1;
-        while (opcion != opciones.length - 1) {
-            opcion = metodos.menuBotones("Seleccione una opción", "Sub Menú Personas", opciones, "Volver");
-            switch (opcion) {
-                case 0:
-                    registrar();
-                    break;
-                case 1:
-                    editar("951");
-                    break;
-                case 2:
-                    consultar("");
-                    break;
-                case 3:
-                    eliminar("963");
-                    break;
-                case 4:
-                    
-                    break;
-            }
-        }
-    }
 }
