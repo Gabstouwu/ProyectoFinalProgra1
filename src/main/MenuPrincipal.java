@@ -17,10 +17,12 @@ public class MenuPrincipal {
         PersonaView persona = new PersonaView();
         VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
-        UsuarioController usuarioController = new UsuarioController();
         ChoferView choferView = new ChoferView();
         //// cargar datos preexistentes
-        usuarioController.CargarDatos();
+        UsuarioController.CargarDatosUsuario();
+        
+        
+        
         ////Menu
         int opcion;
         do {
