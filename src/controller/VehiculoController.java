@@ -46,6 +46,7 @@ public class VehiculoController {
                 }
             }
         } catch (Exception e) {
+            m.msg("Ingrese una capacidad de pasajeros valida");
         }
     }
 
