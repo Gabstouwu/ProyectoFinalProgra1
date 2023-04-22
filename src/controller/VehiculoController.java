@@ -5,7 +5,7 @@ import modelo.Vehiculo;
 import view.VehiculoView;
 import controller.Metodos;
 
-public class VehiculoController { 
+public class VehiculoController {
 
     public static ArrayList<Vehiculo> lista_V = new ArrayList();
 
@@ -46,32 +46,35 @@ public class VehiculoController {
                 }
             }
         } catch (Exception e) {
-            m.msg("Ingrese una capacidad de pasajeros valida");
+            m.msg("Ingrese una capacidad de pasajeros válida");
         }
     }
 
     public void editar() {
-        if (lista_V.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-            VehiculoView vehiculo = new VehiculoView();
-            vehiculo.Placa();
-            String placa = vehiculo.numeroPlaca;
-
-            if (existe(placa) && posicion(placa) < lista_V.size()) {
-                vehiculo.editar();
-                lista_V.get(posicion(placa)).setPlaca(vehiculo.numeroPlaca);
-                lista_V.get(posicion(placa)).setMarca(vehiculo.marca);
-                lista_V.get(posicion(placa)).setEstilo(vehiculo.estilo);
-                lista_V.get(posicion(placa)).setModelo(vehiculo.modelo);
-                lista_V.get(posicion(placa)).setCapacidadVehiculo(vehiculo.capacidad);
-                m.msg("Modificación realizada con exito.");
-
+        try {
+            if (lista_V.isEmpty()) {
+                m.msg("Aun no hay informacion en la lista");
             } else {
-                m.msg("No existe ese numero de placa");
-            }
-        }
+                VehiculoView vehiculo = new VehiculoView();
+                vehiculo.Placa();
+                String placa = vehiculo.numeroPlaca;
 
+                if (existe(placa) && posicion(placa) < lista_V.size()) {
+                    vehiculo.editar();
+                    lista_V.get(posicion(placa)).setPlaca(vehiculo.numeroPlaca);
+                    lista_V.get(posicion(placa)).setMarca(vehiculo.marca);
+                    lista_V.get(posicion(placa)).setEstilo(vehiculo.estilo);
+                    lista_V.get(posicion(placa)).setModelo(vehiculo.modelo);
+                    lista_V.get(posicion(placa)).setCapacidadVehiculo(vehiculo.capacidad);
+                    m.msg("Modificación realizada con exito.");
+
+                } else {
+                    m.msg("No existe ese numero de placa");
+                }
+            }
+        } catch (Exception e) {
+            m.msg("Ingrese una capacidad de pasajeros valida");
+        }
     }
 
     public void eliminar() {
