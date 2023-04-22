@@ -9,69 +9,70 @@ public class UsuarioController {//implements Crudinterfaces{
     public static ArrayList<Usuario> ListaUsuario = new ArrayList<>();
 
     //@Override
-    public void registrar() {
-        String NombreUsuario;
-        String IdUsuario;
-        String ClaveUsuario;
-
-        NombreUsuario = "Carlos";
-        IdUsuario = "951";
-        ClaveUsuario = "14789632";
-
+    public static void registrar(String IdUsuario, String NombreUsuario, String ClaveUsuario) {
         Usuario NuevoUsuario = new Usuario(NombreUsuario, IdUsuario, ClaveUsuario);
-
         ListaUsuario.add(NuevoUsuario);
-        System.out.println("Modificación realizada con exito.");
-
     }
 
     //@Override
     //Estoy usando el método equals() para comparar la cadena IdUsuario con la cadena inputParaBuscar
-    public void consultar() {
+    public Usuario consultar(String idUsuario) {
         String inputParaBuscar = "123";
-        try {
-            for (int i = 0; i < ListaUsuario.size(); i++) {
-                if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
-                    System.out.println(ListaUsuario.get(i));
-                    System.out.println("Modificación realizada con exito.");
 
-                    break;
-                }
+        for (int i = 0; i < ListaUsuario.size(); i++) {
+            if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
+                return ListaUsuario.get(i);
+//                    System.out.println(ListaUsuario.get(i));
+//                    System.out.println("Consulta realizada con exito.");
             }
-        } catch (Exception e) {
-            System.out.println("NO se encuentra el id");
         }
+        return null;
+
     }
 
-    // @Override
-    public boolean editar(String s) {
-
+// @Override
+    public boolean editar(String idUsuario) {
+        String NombreUsuarioNuevo;
+        String ClaveNueva;
+        NombreUsuarioNuevo = "Mario";
+        ClaveNueva = "951";
         String inputParaBuscar = "951";
-
-        int indexId = -1;
-
-        if (indexId != -1) {
-            String CodigoNuevo;
-            String ClaveNueva;
-            CodigoNuevo = "Mario";
-            ClaveNueva = "951";
-
-            for (int i = 0; i < ListaUsuario.size(); i++) {
-                if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
-
-                    ListaUsuario.get(indexId).setCodigoUsuario(CodigoNuevo);
-                    ListaUsuario.get(indexId).setClaveUsuario(ClaveNueva);
-                    return true;
-                }
-            }
-
-            System.out.println("Modificación realizada con exito.");
+        Usuario temporal = consultar(inputParaBuscar);
+        if (temporal != null) {
+            temporal.setCodigoUsuario(NombreUsuarioNuevo);
+            temporal.setClaveUsuario(ClaveNueva);
+            System.out.println("Modificación realizada con exito.");///quitarluego
+            return true;
         }
-        System.out.println("ID no existente");
         return false;
-
     }
 
+//        try {
+//            for (int i = 0; i < ListaUsuario.size(); i++) {
+//                if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
+//                    String CodigoNuevo;
+//                    String ClaveNueva;
+//                    CodigoNuevo = "Mario";
+//                    ClaveNueva = "951";
+//
+//                    for (int i = 0; i < ListaUsuario.size(); i++) {
+//                        if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
+//
+//                            ListaUsuario.get(indexId).setCodigoUsuario(CodigoNuevo);
+//                            ListaUsuario.get(indexId).setClaveUsuario(ClaveNueva);
+//                            return true;
+//                        }
+//                    }
+//
+//                }
+//            }
+//
+//            System.out.println("Modificación realizada con exito.");
+//        }
+//        System.out.println("ID no existente");
+//        return false;
+//
+//    }
     //@Override
     public boolean eliminar(String idEliminar) {
 
@@ -103,31 +104,4 @@ public class UsuarioController {//implements Crudinterfaces{
 
     }
 //submenu
-
-    public void MenuUsuario() {
-        Metodos metodos = new Metodos();
-        String[] opciones = {"Registrar Nuevo Usuario", "Modificar Usuario", "Consultar Informacion de Usuario", "Eliminar", "Volver"};
-
-        int opcion = -1;
-        while (opcion != opciones.length - 1) {
-            opcion = metodos.menuBotones("Seleccione una opción", "Sub Menú Personas", opciones, "Volver");
-            switch (opcion) {
-                case 0:
-                    registrar();
-                    break;
-                case 1:
-                    consultar();
-                    break;
-                case 2:
-                    editar("951");
-                    break;
-                case 3:
-                    eliminar("963");
-                    break;
-                case 4:
-                    consultar();
-                    break;
-            }
-        }
-    }
 }
