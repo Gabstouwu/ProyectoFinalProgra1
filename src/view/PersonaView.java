@@ -23,13 +23,13 @@ public class PersonaView {
                     personas.registrar();
                     break;
                 case 1:
-                    consultarPersona();
+                    personas.consultar();
                     break;
                 case 2:
-                    editarPersona();
+                    personas.editar();
                     break;
                 case 3:
-                    eliminarPersona();
+                    personas.eliminar();
                     break;
                 case 4:
                     decision = false;
@@ -53,14 +53,14 @@ public class PersonaView {
     }
 
     public void consultarPersona() {
-
+        id = m.getCadena("Ingrese el Id de la persona a consultar: ");
     }
 
     public void editarPersona() {
-
+        id = m.getCadena("Ingrese el Id de la persona a editar: ");
     }
 
     public void eliminarPersona() {
-
+        id = m.getCadena("Ingrese el Id de la persona a eliminar: ");
     }
 }
