@@ -1,6 +1,5 @@
 package controller;
 
-import interfaces.Crudinterfaces;
 import java.util.ArrayList;
 import modelo.Persona;
 import view.PersonaView;
@@ -49,16 +48,17 @@ public class PersonaController {
     }
 
     public void consultar() {
-
+        
         if (lista_Persona.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
             PersonaView persona = new PersonaView();
-            persona.consultarPersona();
+            persona.Id();
             String id = persona.id;
             if (existe(id)) {
                 for (int i = 0; i < lista_Persona.size(); i++) {
                     if (lista_Persona.get(i).getIdPersona().equals(id)) {
+                        
                         m.msg(lista_Persona.get(i).toString());
                         break;
                     }
@@ -68,27 +68,49 @@ public class PersonaController {
                 m.msg("Persona no existe");
             }
         }
+        
     }
 
     public void editar() {
-        
+        if (lista_Persona.isEmpty()) {
+            m.msg("Aun no hay informacion en la lista");
+        } else {
+            
+            PersonaView persona = new PersonaView();
+            persona.Id();
+            String id = persona.id;
+           
+                
+                    if (existe(id) && posicion(id)< lista_Persona.size()) {
+                        persona.editarPersona();
+                        lista_Persona.get(posicion(id)).setNombrePersona(persona.nombre);
+                        lista_Persona.get(posicion(id)).setTelefonoPersona(persona.numero);
+                        lista_Persona.get(posicion(id)).setCorreo(persona.correo);
+                        m.msg("Modificación realizada con exito.");
+                        
+                } else {
+                        m.msg("No existe el numero de id");
+                    }
+            
+        }
     }
 
     public void eliminar() {
-         if (lista_Persona.isEmpty()) {
+        if (lista_Persona.isEmpty()) {
             m.msg("Aun no hay informacion en la lista");
         } else {
             PersonaView persona = new PersonaView();
-            persona.eliminarPersona();
+            persona.Id();
             String id = persona.id;
-            if (poscision(id) < lista_Persona.size()) {
-               
-                    lista_Persona.remove(poscision(id));
-                    m.msg("Persona Eliminada"+ lista_Persona.toString());
+            if (existe(id) && posicion(id) < lista_Persona.size()) {
+
+                lista_Persona.remove(posicion(id));
+                m.msg("Persona Eliminada" + lista_Persona.toString());
+            }else{
+            m.msg("Persona no existe");
             }
-            }
-            
-        
+        }
+
     }
 
     public boolean existe(String id) {
@@ -101,14 +123,14 @@ public class PersonaController {
 
         return valor;
     }
-    
-    public int poscision(String id){
-    int pos=0;
-    for (Persona personas : lista_Persona) {
+
+    public int posicion(String id) {
+        int pos = 0;
+        for (Persona personas : lista_Persona) {
             if (personas.getIdPersona().equals(id)) {
                 pos = personas.getIdPersona().indexOf(id);
             }
         }
-    return pos;
+        return pos;
     }
 }

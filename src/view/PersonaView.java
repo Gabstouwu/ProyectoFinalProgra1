@@ -3,16 +3,18 @@ package view;
 
 import controller.Metodos;
 import controller.PersonaController;
-public class PersonaView {
 
+public class PersonaView {
+    
     public String id ;
     public String numero;
     public String correo;
     public String nombre;
     static Metodos m = new Metodos();
-    
+   
     public void MenuPersonas() {
     PersonaController personas = new PersonaController();
+    
         boolean decision = true;
         int opcion;
         String[] opciones = {"Registrar", "Consultar", "Editar", "Elmininar", "Salir"};
@@ -52,15 +54,25 @@ public class PersonaView {
 
     }
 
-    public void consultarPersona() {
-        id = m.getCadena("Ingrese el Id de la persona a consultar: ");
+    public void consultarPersona(int id) {
+        
+        
+       
     }
 
     public void editarPersona() {
-        id = m.getCadena("Ingrese el Id de la persona a editar: ");
+        nombre = m.getCadena("Ingrese el nuevo nombre de la persona: ");
+        numero = m.getCadena("Ingrese el nuevo numero de la persona: ");
+        correo = m.getCadena("Ingrese el nuevo correo de la persona: ");
     }
 
     public void eliminarPersona() {
-        id = m.getCadena("Ingrese el Id de la persona a eliminar: ");
+        m.msg("Persona Eliminada con exito");
     }
+    
+    public String Id(){
+    id = m.getCadena("Ingrese el Id de la persona: ");
+    return id;
+    }
+    
 }
