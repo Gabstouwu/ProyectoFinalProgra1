@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Vehiculo;
 
 public class Metodos {
 
@@ -28,4 +30,5 @@ public class Metodos {
         int entero = Integer.parseInt(JOptionPane.showInputDialog(msg));
         return entero;
     }
+
 }
