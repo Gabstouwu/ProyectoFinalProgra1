@@ -20,7 +20,7 @@ public class MenuPrincipal {
         VehiculoController bus= new VehiculoController();
         
         //// cargar datos preexistentes
-        bus.CargarDatos();
+        
         usuario.CargarDatos();
         
         ////Menu
