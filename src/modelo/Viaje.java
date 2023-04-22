@@ -6,13 +6,13 @@ public class Viaje {
     private String idChofer;
     private String fechaViaje;
     private String destino;
-    private String capacidadPasajeros;
+    private int capacidadPasajeros;
     private int precioTiquete;
 
     public Viaje() {
     }
 
-    public Viaje(String idViaje, String placa, String idChofer, String fechaViaje, String destino, String capacidadPasajeros, int precioTiquete) {
+    public Viaje(String idViaje, String placa, String idChofer, String fechaViaje, String destino, int capacidadPasajeros, int precioTiquete) {
         this.idViaje = idViaje;
         this.placa = placa;
         this.idChofer = idChofer;
@@ -70,11 +70,11 @@ public class Viaje {
         this.destino = destino;
     }
 
-    public String getCapacidadPasajeros() {
+    public int getCapacidadPasajeros() {
         return capacidadPasajeros;
     }
 
-    public void setCapacidadPasajeros(String capacidadPasajeros) {
+    public void setCapacidadPasajeros(int capacidadPasajeros) {
         this.capacidadPasajeros = capacidadPasajeros;
     }
 
