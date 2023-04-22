@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import modelo.Persona;
 import view.PersonaView;
 
-public class PersonaController implements Crudinterfaces {
+public class PersonaController {
 
     public static ArrayList<Persona> lista_Persona = new ArrayList();
 
     Metodos m = new Metodos();
 
-    @Override
     public void registrar() {
         Persona crearPersona = new Persona();
         try {
@@ -22,7 +21,7 @@ public class PersonaController implements Crudinterfaces {
             String nombre = persona.nombre;
             String numero = persona.numero;
             String correo = persona.correo;
-            if (lista_Persona.size() <= 0) {
+            if (lista_Persona.isEmpty()) {
                 crearPersona.setIdPersona(id);
                 crearPersona.setNombrePersona(nombre);
                 crearPersona.setTelefonoPersona(numero);
@@ -30,38 +29,45 @@ public class PersonaController implements Crudinterfaces {
                 lista_Persona.add(crearPersona);
                 System.out.println(lista_Persona);
             } else {
-                for (int i = 0; i <= lista_Persona.size(); i++) {
-                    if (lista_Persona.get(i).getIdPersona().equals(id)) {
-                        m.msg("Id ya existente, ingrese una persona nueva");
+                // 1, 2
+                // 2
 
-                    } else {
-
-                        crearPersona.setIdPersona(id);
-                        crearPersona.setNombrePersona(nombre);
-                        crearPersona.setTelefonoPersona(numero);
-                        crearPersona.setCorreo(correo);
-                        lista_Persona.add(crearPersona);
-
-                        System.out.println(lista_Persona);
-
-                    }
-                    break;
+                if (existe(id)) {
+                    m.msg("Id ya existente, ingrese una persona nueva");
+                    
+                } else {
+                    crearPersona.setIdPersona(id);
+                    crearPersona.setNombrePersona(nombre);
+                    crearPersona.setTelefonoPersona(numero);
+                    crearPersona.setCorreo(correo);
+                    lista_Persona.add(crearPersona);
+                    System.out.println(lista_Persona);
+                    
                 }
+
             }
         } catch (Exception e) {
 
         }
     }
 
-    @Override
     public void consultar() {
     }
 
-    @Override
     public void editar() {
     }
 
-    @Override
     public void eliminar() {
+    }
+
+    public boolean existe(String id) {
+    boolean pepe = false;   
+        for (Persona personas : lista_Persona) {
+            if (personas.getIdPersona().equals(id)) {
+                pepe = true;
+            }
+        }
+
+        return pepe;
     }
 }
