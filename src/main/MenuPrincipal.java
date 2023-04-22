@@ -14,8 +14,7 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Metodos m = new Metodos();
         PersonaView persona = new PersonaView();
-        VehiculoView vehiculo = new VehiculoView();
-        //PersonaController personaC = new PersonaController();
+        VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
         UsuarioController usuario = new UsuarioController();
         VehiculoController bus= new VehiculoController();
@@ -43,7 +42,6 @@ public class MenuPrincipal {
             switch (opcion) {
                 case 1:
                     persona.MenuPersonas();
-                    
                     break;
                 case 2:
                     vehiculo.MenuVehiculo();
