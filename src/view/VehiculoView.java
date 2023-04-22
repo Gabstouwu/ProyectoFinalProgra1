@@ -5,11 +5,12 @@ import controller.VehiculoController;
 
 public class VehiculoView {
 
-    public static String numeroPlaca;
-    public static String marca;
-    public static String estilo;
-    public static String modelo;
-    public static String capacidad;
+    public String numeroPlaca;
+    public String marca;
+    public String estilo;
+    public String modelo;
+    public int capacidad;
+    
     Metodos m = new Metodos();
 
     public void MenuVehiculo() {
@@ -24,13 +25,13 @@ public class VehiculoView {
                     vehiculo.registrar();
                     break;
                 case 1:
-                    
+                    vehiculo.consultar();
                     break;
                 case 2:
-                    
+                    vehiculo.editar();
                     break;
                 case 3:
-                    
+                    vehiculo.eliminar();
                     break;
                 case 4:
                     decision = false;
@@ -41,14 +42,30 @@ public class VehiculoView {
         }
 
     }
-    public String crearVehiculo() {
+    public String registrar() {
 
         numeroPlaca = m.getCadena("Ingrese el numero de placa: ");
         marca = m.getCadena("Ingrese la marca del vehiculo: ");
         estilo = m.getCadena("Ingrese el estilo del vehiculo: ");
         modelo = m.getCadena("Ingrese el modelo(año) del vehiculo: ");
-        capacidad = m.getCadena("Ingrese la capacidad del vehiculo: ");
+        capacidad = m.getEntero("ingrese la capacidad del vehiculo: ");
         
         return numeroPlaca;
     }
+    
+    public void consultar() {
+    
+        numeroPlaca = m.getCadena("Ingrese el numero de placa que desea consultar: ");
+    }
+    
+    public void editar() {
+//         numeroPlaca = m.getCadena("Ingrese el numero de placa que desea editar: ");
+    }
+    
+    public void eliminar() {
+        
+        numeroPlaca = m.getCadena("Ingrese el numero de placa que desea eliminar: ");
+    }
+    
+    
 }
