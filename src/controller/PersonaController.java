@@ -29,12 +29,9 @@ public class PersonaController {
                 lista_Persona.add(crearPersona);
                 System.out.println(lista_Persona);
             } else {
-                // 1, 2
-                // 2
-
                 if (existe(id)) {
                     m.msg("Id ya existente, ingrese una persona nueva");
-                    
+
                 } else {
                     crearPersona.setIdPersona(id);
                     crearPersona.setNombrePersona(nombre);
@@ -42,7 +39,7 @@ public class PersonaController {
                     crearPersona.setCorreo(correo);
                     lista_Persona.add(crearPersona);
                     System.out.println(lista_Persona);
-                    
+
                 }
 
             }
@@ -52,6 +49,25 @@ public class PersonaController {
     }
 
     public void consultar() {
+        PersonaView persona = new PersonaView();
+        String id = persona.id;
+        if (lista_Persona.isEmpty()) {
+            m.msg("Aun no hay informacion en la lista");
+        } else {
+            try {
+
+                if (existe(id)) {
+                    for (int i = 0; i< lista_Persona.size(); i++){
+                    m.msg(lista_Persona.get(i).toString());
+                    break;
+                    }
+                    
+
+                }
+            } catch (Exception e) {
+                m.msg("El número de chasis ingresado es incorrecto.");
+            }
+        }
     }
 
     public void editar() {
@@ -61,13 +77,13 @@ public class PersonaController {
     }
 
     public boolean existe(String id) {
-    boolean pepe = false;   
+        boolean valor = false;
         for (Persona personas : lista_Persona) {
             if (personas.getIdPersona().equals(id)) {
-                pepe = true;
+                valor = true;
             }
         }
 
-        return pepe;
+        return valor;
     }
 }
