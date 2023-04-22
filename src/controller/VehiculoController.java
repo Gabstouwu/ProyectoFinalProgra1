@@ -1,71 +1,130 @@
 package controller;
 
-import static controller.PersonaController.lista_Persona;
-import interfaces.Crudinterfaces;
+//import interfaces.Crudinterfaces;
 import java.util.ArrayList;
 import modelo.Vehiculo;
 import view.VehiculoView;
+import controller.Metodos;
 
-public class VehiculoController implements Crudinterfaces {
+public class VehiculoController { //implements Crudinterfaces {
 
     public static ArrayList<Vehiculo> lista_V = new ArrayList();
-    VehiculoView vehiculo = new VehiculoView();
+
     Metodos m = new Metodos();
     Vehiculo crearVehiculo = new Vehiculo();
 
-    @Override
+    //@Override
     public void registrar() {
+        Vehiculo crearVehiculo = new Vehiculo();
         try {
-            String id = VehiculoView.numeroPlaca;
-            vehiculo.crearVehiculo();
 
-            String placa = VehiculoView.numeroPlaca;
-            String marca = VehiculoView.marca;
-            String estilo = VehiculoView.estilo;
-            String modelo = VehiculoView.modelo;
-            String capacidad = VehiculoView.capacidad;
+            VehiculoView vehiculo = new VehiculoView();
+            vehiculo.registrar();
+            String placa = vehiculo.numeroPlaca;
+            String marca = vehiculo.marca;
+            String estilo = vehiculo.estilo;
+            String modelo = vehiculo.modelo;
+            int capacidad = vehiculo.capacidad;
 
-            for (int i = 0; i < lista_V.size(); i++) {
-                if (lista_V.get(i).getPlaca() != id) {
-                    m.msg(id);
+            if (lista_V.isEmpty()) {
+                crearVehiculo.setPlaca(placa);
+                crearVehiculo.setMarca(marca);
+                crearVehiculo.setEstilo(estilo);
+                crearVehiculo.setModelo(modelo);
+                crearVehiculo.setCapacidadVehiculo(capacidad);
+                lista_V.add(crearVehiculo);
+                System.out.println(lista_V);
+            } else {
+                if (existe(placa)) {
+                    m.msg("Id ya existente, ingrese una persona nueva");
+                }else{
                     crearVehiculo.setPlaca(placa);
-                    crearVehiculo.setMarca(marca);
-                    crearVehiculo.setEstilo(estilo);
-                    crearVehiculo.setModelo(modelo);
-                    crearVehiculo.setCapacidadPasajeros(capacidad);
-                    lista_V.add(crearVehiculo);
-
-                    System.out.println(lista_V);
-                    break;
-
+                crearVehiculo.setMarca(marca);
+                crearVehiculo.setEstilo(estilo);
+                crearVehiculo.setModelo(modelo);
+                crearVehiculo.setCapacidadVehiculo(capacidad);
+                lista_V.add(crearVehiculo);
+                System.out.println(lista_V);
                 }
-
             }
-        } catch (Exception e) {
-            m.msg("Id ya existente, ingrese una persona nueva");
-        }
+        }catch (Exception e) {
+    }
+}
+
+//@Override
+public void editar() {
+//        VehiculoView vehiculo_Edit = new VehiculoView(); 
+//        vehiculo_Edit.editar();
+//        String placa = vehiculo_Edit;
+//        String indexPlaca = -1;
+//        try {
+//            chasis = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de chasis del vehiculo"));
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Ingreso un chasis no válido");
+//        }
+//
+//        for (int i = 0; i < lista_autos.size(); i++) {
+//            if (lista_autos.get(i).getChasis() == chasis) {
+//                indexChasis = i;
+//                break;
+//            }
+//        }
+//        if (indexChasis != -1) {
+//            String condi = lista_autos.get(indexChasis).getCondicion();
+//            String Marca;
+//            String Estilo;
+//            int Modelo;
+//            String Color;
+//            int Precio;
+//            Marca = JOptionPane.showInputDialog("Ingrese la marca del vehiculo");
+//            Estilo = JOptionPane.showInputDialog("Ingrese el estilo del vehiculo");
+//            Modelo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año del vehiculo"));
+//            Color = JOptionPane.showInputDialog("Ingrese el Color del Vehiculo: ");
+//            Precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Precio del Vehiculo: "));
+//            Condicion seleccion = (Condicion) JOptionPane.showInputDialog(null, "¿Vendido?", "Confirmación", JOptionPane.QUESTION_MESSAGE, null, Condicion.values(), condi);
+//            lista_autos.get(indexChasis).setMarca(Marca);
+//            lista_autos.get(indexChasis).setCondicion(seleccion.toString());
+//            lista_autos.get(indexChasis).setColor(Color);
+//            lista_autos.get(indexChasis).setEstilo(Estilo);
+//            lista_autos.get(indexChasis).setModelo(Modelo);
+//            lista_autos.get(indexChasis).setPrecio(Precio);
+//            JOptionPane.showMessageDialog(null, "Modificación realizada con exito.");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Chasis no existe");
+//        }
+//
 
     }
 
-    @Override
-    public void editar() {
-    }
-
-    @Override
+    //@Override
     public void eliminar() {
+        VehiculoView vehiculo_E = new VehiculoView(); 
+        vehiculo_E.eliminar();
+           String placa = vehiculo_E.numeroPlaca;
+            Vehiculo vehiculo = new Vehiculo();
+            for (int i = 0; i < lista_V.size(); i++) {
+                vehiculo = (Vehiculo) lista_V.get(i);
+
+                if (lista_V.get(i).getPlaca() == placa) {
+
+                    lista_V.remove(i);
+                    m.msg(lista_V.toString());
+                    break;
+                }
+            }
     }
 
-    @Override
+    // @Override
     public void consultar() {
+        VehiculoView vehiculo_C = new VehiculoView(); 
+        vehiculo_C.consultar();
         if (lista_V.isEmpty()) {
             m.msg("No hay registro de vehiculos");
         } else {
-
-            String placa = m.getCadena("Ingrese el numero de placa");
             Vehiculo vehiculo = new Vehiculo();
             vehiculo.setPlaca("");
             for (Vehiculo v : lista_V) {
-                if (v.getPlaca().equals(placa)) {
+                if (v.getPlaca().equals(lista_V)) {
                     vehiculo = v;
                     break;
                 }
@@ -78,14 +137,15 @@ public class VehiculoController implements Crudinterfaces {
         }
     }
 
-    public void CargarDatos() {
+    
+        public boolean existe(String id) {
+        boolean valor = false;
+        for (Vehiculo vehiculo : lista_V) {
+            if (vehiculo.getPlaca().equals(id)) {
+                valor = true;
+            }
+        }
 
-        Vehiculo V1 = new Vehiculo("1234", " Hyundai", "slim", "2010", "20");
-        Vehiculo V2 = new Vehiculo("5678", "Mitsubishi", "small", "2015", "35");
-        Vehiculo V3 = new Vehiculo("9012", "Volkswagen", "xSmall", "2022", "50");
-        lista_V.add(V1);
-        lista_V.add(V2);
-        lista_V.add(V3);
-
+        return valor;
     }
 }
