@@ -17,9 +17,9 @@ public class PersonaView {
     
         boolean decision = true;
         int opcion;
-        String[] opciones = {"Registrar", "Consultar", "Editar", "Elmininar", "Salir"};
+        String[] opciones = {"Registrar", "Consultar", "Editar", "Elmininar", "Volver"};
         while (decision == true) {
-            opcion = m.menuBotones("Elija una Opcion", "Elija una opcion:", opciones, "Registrar");
+            opcion = m.menuBotones("Elija una Opcion", "Sub Menú Personas", opciones, "Registrar");
             switch (opcion) {
                 case 0:
                     personas.registrar();
