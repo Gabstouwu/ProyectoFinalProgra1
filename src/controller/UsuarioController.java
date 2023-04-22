@@ -21,17 +21,20 @@ public class UsuarioController {//implements Crudinterfaces{
         Usuario NuevoUsuario = new Usuario(NombreUsuario, IdUsuario, ClaveUsuario);
 
         ListaUsuario.add(NuevoUsuario);
+        System.out.println("Modificación realizada con exito.");
 
     }
 
     //@Override
     //Estoy usando el método equals() para comparar la cadena IdUsuario con la cadena inputParaBuscar
     public void consultar() {
-        String inputParaBuscar = "951";
+        String inputParaBuscar = "123";
         try {
             for (int i = 0; i < ListaUsuario.size(); i++) {
                 if (ListaUsuario.get(i).getIdUsuario().equals(inputParaBuscar)) {
                     System.out.println(ListaUsuario.get(i));
+                    System.out.println("Modificación realizada con exito.");
+
                     break;
                 }
             }
@@ -72,7 +75,7 @@ public class UsuarioController {//implements Crudinterfaces{
     //@Override
     public boolean eliminar(String idEliminar) {
 
-        idEliminar = "963";
+        idEliminar = "123";
 
         for (int i = 0; i < ListaUsuario.size(); i++) {
 

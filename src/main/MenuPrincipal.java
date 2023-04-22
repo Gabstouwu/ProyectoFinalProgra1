@@ -7,16 +7,24 @@ import view.VehiculoView;
 
 import controller.TiqueteController;
 import controller.UsuarioController;
+import controller.VehiculoController;
 
 public class MenuPrincipal {
 
     public static void main(String[] args) {
         Metodos m = new Metodos();
-        PersonaView persona = new PersonaView();
+       // PersonaView persona = new PersonaView();
         VehiculoView vehiculo = new VehiculoView();
         //PersonaController personaC = new PersonaController();
         TiqueteController ventas = new TiqueteController();
         UsuarioController usuario = new UsuarioController();
+        VehiculoController bus= new VehiculoController();
+        
+        //// cargar datos preexistentes
+        bus.CargarDatos();
+        usuario.CargarDatos();
+        
+        ////Menu
         int opcion;
         do {
             try {
