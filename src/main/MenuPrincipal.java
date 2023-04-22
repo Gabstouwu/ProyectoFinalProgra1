@@ -7,7 +7,6 @@ import view.VehiculoView;
 
 import controller.TiqueteController;
 import controller.UsuarioController;
-import controller.VehiculoController;
 
 public class MenuPrincipal {
 
@@ -17,12 +16,9 @@ public class MenuPrincipal {
         VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
         UsuarioController usuario = new UsuarioController();
-        VehiculoController bus= new VehiculoController();
         
         //// cargar datos preexistentes
-        
         usuario.CargarDatos();
-        
         ////Menu
         int opcion;
         do {
