@@ -46,7 +46,7 @@ public class ViajeView {
         String placa = JOptionPane.showInputDialog(null, "Ingrese numero de placa");//
         int capacidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese capacidad de pasajeros"));
         int tiquete = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el precio del tiquete"));
-        ViajeController.registrar(Viaje, placa, IdChofer, fecha, destino, capacidad, tiquete);
+//        ViajeController.registrar(Viaje, placa, IdChofer, fecha, destino, capacidad, tiquete);
 
         if (ViajeController.registrar(Viaje, placa, IdChofer, fecha, destino, capacidad, tiquete)) {
             JOptionPane.showMessageDialog(null, "Su viaje fue registrado correctamente.");

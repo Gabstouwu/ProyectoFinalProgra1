@@ -24,10 +24,10 @@ public class MenuPrincipal {
         ChoferView choferView = new ChoferView();
         ViajeView viajeview = new ViajeView();
         //// cargar datos preexistentes
-        PersonaController.cargarDatosPersona();
-        ChoferController.cargarDatosChofer();
-        UsuarioController.CargarDatosUsuario();
-        ViajeController.CargarDatosViaje();
+//        PersonaController.cargarDatosPersona();
+//        ChoferController.cargarDatosChofer();
+//        UsuarioController.CargarDatosUsuario();
+//        ViajeController.CargarDatosViaje();
         ////Menu
         int opcion;
         do {
