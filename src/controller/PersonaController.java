@@ -2,13 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 import modelo.Persona;
-import view.PersonaView;
+
 
 public class PersonaController {
 
     public static ArrayList<Persona> lista_Persona = new ArrayList();
 
-    Metodos m = new Metodos();
+  
 
     public static boolean registrar(String id, String nombre, String numero, String correo) {
         Persona NuevaPersona = new Persona(id, nombre, numero, correo);
@@ -75,7 +75,6 @@ public class PersonaController {
         }
         return pos;
     }
-
 
 
 
