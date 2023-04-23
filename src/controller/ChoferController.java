@@ -3,98 +3,54 @@ package controller;
 import java.util.ArrayList;
 import modelo.Chofer;
 import view.ChoferView;
-import controller.Metodos;
+
 
 public class ChoferController {
 
     public static ArrayList<Chofer> lista_Chofer = new ArrayList();
-    Metodos m = new Metodos();
+   
 
-    public void registrar() {
-        Chofer crearChofer = new Chofer();
-        try {
+    public static boolean registrar(String idChofer, String fechaVencimiento) {
+        Chofer NuevoChofer = new Chofer(idChofer, fechaVencimiento);
+        lista_Chofer.add(NuevoChofer);
+        
+        return true;
+    }
 
-            ChoferView chofer = new ChoferView();
-            chofer.crearChofer();
-            String id = chofer.id;
-            String fechaVencimiento = chofer.fechaVencimiento;
+    public static Chofer consultar(String idConsultar) {
+        for (int i = 0; i < lista_Chofer.size(); i++) {
+            if (lista_Chofer.get(i).getIdPersona().equals(idConsultar)) {
 
-            if (lista_Chofer.isEmpty()) {
-                crearChofer.setIdPersona(id);
-                crearChofer.setVencimientoLicencia(fechaVencimiento);
-                lista_Chofer.add(crearChofer);
-                m.msg("Chofer creado satisfactoriamente");
-            } else {
-                if (existe(id)) {
-                    m.msg("Id ya existente, ingrese una chofer nuevo");
-
-                } else {
-                    crearChofer.setIdPersona(id);
-                    crearChofer.setVencimientoLicencia(fechaVencimiento);;
-                    lista_Chofer.add(crearChofer);
-                    m.msg("Chofer creado satisfactoriamente");
+                for (Chofer c : lista_Chofer) {//0
 
                 }
 
+                return lista_Chofer.get(i);
             }
-        } catch (Exception e) {
-
         }
+        return null;
     }
 
-    public void consultar() {
-        if (lista_Chofer.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-            ChoferView choferView = new ChoferView();
-            choferView.Id();
-            String id = choferView.id;
-            if (existe(id) && posicion(id) < lista_Chofer.size()) {
-
-                m.msg(lista_Chofer.get(posicion(id)).toString());
-
-            } else {
-                m.msg("Chofer no existe");
-            }
+    public static boolean editar(String idEditar, String Fecha) {
+        Chofer temporal = consultar(idEditar);
+        if (temporal != null) {
+            temporal.setVencimientoLicencia(Fecha);
+            
+            return true;
         }
+        return false;
     }
 
-    public void editar() {
-        if (lista_Chofer.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
+    public static boolean eliminar(String idEliminar) {
+      for (int i = 0; i < lista_Chofer.size(); i++) {
 
-            ChoferView choferView = new ChoferView();
-            choferView.Id();
-            String id = choferView.id;
+            if (lista_Chofer.get(i).getIdPersona().equals(idEliminar)) {
 
-            if (existe(id) && posicion(id) < lista_Chofer.size()) {
-                choferView.editarChofer();
-                lista_Chofer.get(posicion(id)).setVencimientoLicencia(choferView.fechaVencimiento);
-                m.msg("Modificación realizada con exito.");
-
-            } else {
-                m.msg("No existe el numero de id");
-            }
-
-        }
-    }
-
-    public void eliminar() {
-        if (lista_Chofer.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-            ChoferView choferView = new ChoferView();
-            choferView.Id();
-            String id = choferView.id;
-            if (existe(id) && posicion(id) < lista_Chofer.size()) {
-
-                lista_Chofer.remove(posicion(id));
-                m.msg("Chofer Eliminado\n" + lista_Chofer.toString());
-            } else {
-                m.msg("Persona no existe");
+                lista_Chofer.remove(i);
+                return true;
             }
         }
+        return false;
     }
 
     public boolean existe(String id) {
