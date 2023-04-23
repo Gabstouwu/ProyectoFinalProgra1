@@ -1,10 +1,7 @@
 package view;
 
-import controller.UsuarioController;
 import controller.Metodos;
 import controller.TiqueteController;
-import java.util.ArrayList;
-import modelo.Usuario;
 import javax.swing.*;
 import modelo.Tiquete;
 
@@ -13,7 +10,8 @@ public class TiqueteView {
     public static void MenuTiquete() {
 
         Metodos metodos = new Metodos();
-        String[] opciones = {"Comprar tiquete", "Consultar una venta", "Anular una compra de tiquete", "Valorar Espacio en viaje", "Generar informe", "Volver"};
+
+        String[] opciones = {"Registrar una venta", "Consultar una venta", "Anular una Venta", "Generar una venta", "Volver"};
 
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -45,7 +43,7 @@ public class TiqueteView {
         int inputCantidadPersonas = Integer.parseInt(inputCantidadPersonasString);
         String inputfecha = JOptionPane.showInputDialog(null, "Ingrese la fecha del viaje:");
 
-        int idgenerado= TiqueteController.GeneradorID.generarID();
+        int idgenerado= TiqueteController.generarID()+1;
         
         
         if (TiqueteController.GenerarVenta(inputIdViaje, inputCantidadPersonas, inputfecha)) {

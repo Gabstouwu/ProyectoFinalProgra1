@@ -2,15 +2,9 @@ package main;
 import controller.ChoferController;
 import controller.Metodos;
 import controller.PersonaController;
-import view.PersonaView;
-import view.UsuarioView;
-import view.VehiculoView;
-//import controller.PersonaController; Descomentar cuando se complete persona controller
-
 import controller.TiqueteController;
 import controller.UsuarioController;
 import controller.ViajeController;
-import view.ChoferView;
 import static view.ChoferView.MenuChofer;
 import static view.PersonaView.MenuPersonas;
 import static view.TiqueteView.MenuTiquete;
