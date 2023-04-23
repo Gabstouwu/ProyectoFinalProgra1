@@ -1,10 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import modelo.Tiquete;
 import modelo.Vehiculo;
 import modelo.Viaje;
@@ -74,7 +71,10 @@ public class TiqueteController { // implements Crudinterfaces {
 
     }
 
-    
+    public static void imprimir() {
+        JOptionPane.showMessageDialog(null, ListaVentas);
+    }
+
     public static boolean eliminar(String idEliminar) {
         int idEli = Integer.parseInt(idEliminar);
         for (int i = 0; i < ListaVentas.size(); i++) {

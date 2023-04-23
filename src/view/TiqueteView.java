@@ -11,7 +11,7 @@ public class TiqueteView {
 
         Metodos metodos = new Metodos();
 
-        String[] opciones = {"Registrar una venta", "Consultar una venta", "Anular una Venta", "Generar una venta", "Volver"};
+        String[] opciones = {"Registrar una venta", "Consultar una venta", "Anular una Venta", "Generar un Informe", "Volver"};
 
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -27,12 +27,12 @@ public class TiqueteView {
                     TiqueteView.eliminarVenta();
                     break;
                 case 3:
-                    break;
-                case 5:
+                    TiqueteController.imprimir();
                     break;
                 case 4:
-                    //Salir del SubMenu Usuario
+                    ///se sale del menu
                     break;
+
             }
         }
     }
@@ -73,23 +73,7 @@ public class TiqueteView {
             JOptionPane.showMessageDialog(null, "Ventao no encontrada.");
         }
     }
-     public static void generarInforme() {
 
-        String idConsultar = JOptionPane.showInputDialog(null, "Digite el id del viaje para generar un informe");//Input del id;
-
-        int idConsulta = Integer.parseInt(idConsultar);
-
-        Tiquete Consultado = TiqueteController.consultar(idConsulta);
-
-        
-        
-        if (Consultado != null) {
-
-            JOptionPane.showMessageDialog(null, "Venta encontrada:\n " + Consultado);
-        } else {
-            JOptionPane.showMessageDialog(null, "Venta no encontrada.");
-        }
-    }
       public static void eliminarVenta() {
 
         String idConsultar = JOptionPane.showInputDialog(null, "Digite el id de la venta a eliminar\nEs una seleccion permanente.");//Input del id;
