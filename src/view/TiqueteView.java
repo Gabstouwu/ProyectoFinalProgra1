@@ -13,7 +13,7 @@ public class TiqueteView {
     public static void MenuTiquete() {
 
         Metodos metodos = new Metodos();
-        String[] opciones = {"Registrar una venta", "Consultar una venta", "Editar una venta", "Anular una Venta", "Generar una venta", "Volver"};
+        String[] opciones = {"Comprar tiquete", "Consultar una venta", "Anular una compra de tiquete", "Valorar Espacio en viaje", "Generar informe", "Volver"};
 
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -43,13 +43,13 @@ public class TiqueteView {
         String inputIdViaje = JOptionPane.showInputDialog(null, "Ingrese un Id de viaje:");//Acá pido id;
         String inputCantidadPersonasString = JOptionPane.showInputDialog(null, "Ingrese la cantidad de personas que van:");
         int inputCantidadPersonas = Integer.parseInt(inputCantidadPersonasString);
-        String inputfecha = JOptionPane.showInputDialog(null, "Ingrese la fecha de hoy:");
+        String inputfecha = JOptionPane.showInputDialog(null, "Ingrese la fecha del viaje:");
 
         int idgenerado= TiqueteController.GeneradorID.generarID();
         
         
         if (TiqueteController.GenerarVenta(inputIdViaje, inputCantidadPersonas, inputfecha)) {
-            JOptionPane.showMessageDialog(null, "Su venta se realizo con exito bajo el ID:"+idgenerado);
+            JOptionPane.showMessageDialog(null, "Su venta se realizo con exito bajo el ID: "+idgenerado);
 
         } else {
             JOptionPane.showMessageDialog(null, "Error al registrar el venta, porfavor verifique el ID del viaje.");
@@ -70,14 +70,14 @@ public class TiqueteView {
         
         if (Consultado != null) {
 
-            JOptionPane.showMessageDialog(null, "Usuario encontrado:\n " + Consultado);
+            JOptionPane.showMessageDialog(null, "Venta encontrada:\n " + Consultado);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
+            JOptionPane.showMessageDialog(null, "Ventao no encontrada.");
         }
     }
      public static void generarInforme() {
 
-        String idConsultar = JOptionPane.showInputDialog(null, "Digite el id del viaje para generar informe");//Input del id;
+        String idConsultar = JOptionPane.showInputDialog(null, "Digite el id del viaje para generar un informe");//Input del id;
 
         int idConsulta = Integer.parseInt(idConsultar);
 
@@ -87,9 +87,9 @@ public class TiqueteView {
         
         if (Consultado != null) {
 
-            JOptionPane.showMessageDialog(null, "Usuario encontrado:\n " + Consultado);
+            JOptionPane.showMessageDialog(null, "Venta encontrada:\n " + Consultado);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
+            JOptionPane.showMessageDialog(null, "Venta no encontrada.");
         }
     }
       public static void eliminarVenta() {
@@ -101,7 +101,7 @@ public class TiqueteView {
         if (eliminado == true) {
             JOptionPane.showMessageDialog(null, "Venta encontrada, se elimino con exito");
         } if (eliminado== false) {
-            JOptionPane.showMessageDialog(null, "Venta no encontrada, porfavor comprobar el ID");
+            JOptionPane.showMessageDialog(null, "Venta no encontrada, porfavor comprobar el ID de la venta");
         }
 
     }

@@ -3,6 +3,10 @@ package controller;
 //import interfaces.Crudinterfaces;
 //import static controller.UsuarioController.ListaUsuario;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modelo.Tiquete;
 import modelo.Vehiculo;
 import modelo.Viaje;
@@ -17,6 +21,7 @@ public class TiqueteController { // implements Crudinterfaces {
 
     ArrayList<Viaje> listaViaje = ViajeController.listaViaje;
     ArrayList<Vehiculo> listaVehiculo = VehiculoController.lista_V;
+
     public static class GeneradorID {
 
         private static int ultimoID = 0;
@@ -73,15 +78,45 @@ public class TiqueteController { // implements Crudinterfaces {
 
     }
 
-    public static Tiquete informe() {
+    public class GenerarInforme extends JFrame {
 
-        
-        return null;
+        GenerarInforme ventana = new GenerarInforme(TiqueteController.ListaVentas);
 
-        
+        private JTable tabla;
+        private DefaultTableModel modeloTabla;
+
+        public GenerarInforme(ArrayList<Tiquete> listaVentas) {
+
+            // Establecer las columnas de la tabla
+            String[] columnas = {"ID", "Fecha", "Precio", "Cantidad de personas"};
+
+            // Crear el modelo de tabla
+            modeloTabla = new DefaultTableModel(columnas, 0);
+
+            // Agregar las filas a la tabla
+            for (Tiquete venta : listaVentas) {
+                Object[] fila = {venta.getIdViaje(), venta.getFechaDeVenta(), venta.getPrecioDeLaVenta(), venta.getCantidadPersonas()};
+                modeloTabla.addRow(fila);
+            }
+
+            // Crear la tabla con el modelo de tabla
+            tabla = new JTable(modeloTabla);
+
+            // Agregar la tabla a un JScrollPane para poder hacer scroll
+            JScrollPane scrollPane = new JScrollPane(tabla);
+
+            // Agregar el JScrollPane a la ventana
+            this.add(scrollPane);
+
+            // Establecer las propiedades de la ventana
+            this.setSize(600, 400);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.setVisible(true);
+        }
     }
-     public static boolean eliminar(String idEliminar) {
-         int idEli = Integer.parseInt(idEliminar);
+
+    public static boolean eliminar(String idEliminar) {
+        int idEli = Integer.parseInt(idEliminar);
         for (int i = 0; i < ListaVentas.size(); i++) {
 
             if (ListaVentas.get(i).getIdViaje() == idEli) {
@@ -103,3 +138,4 @@ public class TiqueteController { // implements Crudinterfaces {
         ListaVentas.add(tiquete3);
     }
 }
+
