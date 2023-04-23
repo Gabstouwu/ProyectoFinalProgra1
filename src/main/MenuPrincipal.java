@@ -10,7 +10,9 @@ import view.VehiculoView;
 
 import controller.TiqueteController;
 import controller.UsuarioController;
+import controller.ViajeController;
 import view.ChoferView;
+import view.ViajeView;
 
 public class MenuPrincipal {
 
@@ -20,10 +22,12 @@ public class MenuPrincipal {
         VehiculoView vehiculo = new VehiculoView(); 
         TiqueteController ventas = new TiqueteController();
         ChoferView choferView = new ChoferView();
+        ViajeView viajeview = new ViajeView();
         //// cargar datos preexistentes
         PersonaController.cargarDatosPersona();
         ChoferController.cargarDatosChofer();
         UsuarioController.CargarDatosUsuario();
+        ViajeController.CargarDatosViaje();
         ////Menu
         int opcion;
         do {
@@ -35,7 +39,8 @@ public class MenuPrincipal {
                         + "3. Ventas\n"
                         + "4. Usuario\n"
                         + "5. Chofer \n"
-                        + "6. Salir\n"      
+                        + "6. Viajes \n"
+                        + "7. Salir\n"      
                         + "Elija una opción:");
             } catch (Exception e) {
                 opcion = 0;
@@ -57,12 +62,15 @@ public class MenuPrincipal {
                 case 5:
                     choferView.MenuChofer();
                     break;
-                case 6:
+                 case 6:
+                    ViajeView.menuViaje();
+                    break;
+                case 7:
                     m.msg("Gracias por usar el sistema, vuelva pronto...");
                     break;
                 default:
 
             }
-        } while (opcion != 6);
+        } while (opcion != 7);
     }
 }

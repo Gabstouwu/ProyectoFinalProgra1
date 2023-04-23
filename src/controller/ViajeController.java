@@ -6,46 +6,85 @@ import view.ViajeView;
 import controller.Metodos;
 
 public class ViajeController {
-    public static ArrayList<Viaje> lista_Viaje = new ArrayList();
+    public static ArrayList<Viaje> listaViaje = new ArrayList();
     
     Metodos m = new Metodos();
-    Viaje crearViaje = new Viaje();
     
-    public void registrar() {
-        
+    public static boolean registrar(String idViaje, String nPlaca, String idChofer, String fechaViaje, String destino, int capacidadPasajeros, int precioTikete) {
+       Viaje nuevoViaje = new Viaje(idViaje,nPlaca, idChofer, fechaViaje, destino, capacidadPasajeros, precioTikete);
+       listaViaje.add(nuevoViaje);
+      return true; 
     }
    
-    public void consultar() {
-        
-    }
+    public static Viaje consultar(String idConsultar) {
 
-    public void editar() {
-        
-    }
-
-    public void eliminar() {
-        
-    }
-    
-    
-     public boolean existe(String idViaje) {
-        boolean valor = false;
-        for (Viaje vehiculo : lista_Viaje) {
-            if (vehiculo.getIdViaje().equals(idViaje)) {
-                valor = true;
+        for (int i = 0; i < listaViaje.size(); i++) {
+            if (listaViaje.get(i).getIdViaje().equals(idConsultar)) {
+                return listaViaje.get(i);
             }
         }
+        return null;
 
-        return valor;
     }
-        
-        public int poscision(String idViaje){
-    int pos=0;
-    for (Viaje viaje : lista_Viaje) {
-            if (viaje.getIdViaje().equals(idViaje)) {
-                pos = viaje.getIdViaje().indexOf(idViaje);
+
+    public static boolean editar(String idViaje, String nPlaca, String idChofer, String nuevaFecha, String nDestino, int capacidadPasajeros, int precioTikete) {
+        Viaje temporal = consultar(idViaje);
+        if (temporal != null) {
+            temporal.setIdChofer(idChofer);
+            temporal.setPlaca(nPlaca);
+            temporal.setFechaViaje(nuevaFecha);
+            temporal.setDestino(nDestino);
+            temporal.setCapacidadPasajeros(capacidadPasajeros);
+            temporal.setPrecioTiquete(precioTikete);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean eliminar(String idEliminar) {
+
+        for (int i = 0; i < listaViaje.size(); i++) {
+
+            if (listaViaje.get(i).getIdViaje().equals(idEliminar)) {
+
+                listaViaje.remove(i);
+                return true;
             }
         }
-    return pos;
+        return false;
     }
+//    
+//    
+//     public boolean existe(String idViaje) {
+//        boolean valor = false;
+//        for (Viaje vehiculo : listaViaje) {
+//            if (vehiculo.getIdViaje().equals(idViaje)) {
+//                valor = true;
+//            }
+//        }
+//
+//        return valor;
+//    }
+//        
+//        public int posicion(String idViaje){
+//    int pos=0;
+//    for (Viaje viaje : listaViaje) {
+//            if (viaje.getIdViaje().equals(idViaje)) {
+//                pos = viaje.getIdViaje().indexOf(idViaje);
+//            }
+//        }
+//    return pos;
+//    }
+        
+        public static void CargarDatosViaje() {
+
+        Viaje usuario1 = new Viaje("123", "Juan", "963","12","ha",548,54);
+        Viaje usuario2 = new Viaje("564", "Juan", "963","12","ha",548,54);
+        Viaje usuario3 = new Viaje("890", "Juan", "963","12","ha",548,54);
+        listaViaje.add(usuario1);
+        listaViaje.add(usuario2);
+        listaViaje.add(usuario3);
+
+    }
+        
 }
