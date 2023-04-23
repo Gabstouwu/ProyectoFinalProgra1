@@ -42,15 +42,16 @@ public class TiqueteController { // implements Crudinterfaces {
 //////////////////////////
     public static boolean GenerarVenta(String idviaje, int cantidadPersona, String fechaVenta) {
 
-        int resultadoPersonas = buscarCantidadPersonas(idviaje);
-        int calculoPersona = resultadoPersonas - cantidadPersona;
+//        int resultadoPersonas = buscarCantidadPersonas(idviaje);
+//        int calculoPersona = resultadoPersonas - cantidadPersona;
 
         int busquedaPrecio = buscarPrecio(idviaje);
-        double preciototal = busquedaPrecio + (busquedaPrecio * IVA);
+        double precioIVA = busquedaPrecio + (busquedaPrecio * IVA);
+        double preciototal = precioIVA*cantidadPersona;
 
         int idgenerado = GeneradorID.generarID();
 
-        Tiquete NuevaVenta = new Tiquete(calculoPersona, idgenerado, fechaVenta, preciototal);
+        Tiquete NuevaVenta = new Tiquete(cantidadPersona, idgenerado, fechaVenta, preciototal);
         ListaVentas.add(NuevaVenta);
         return true;
 
@@ -127,7 +128,7 @@ public class TiqueteController { // implements Crudinterfaces {
 //
 //    }
 
-    public void CargarDatos() {
+    public static void CargarDatosTiquete() {
 
         Tiquete tiquete1 = new Tiquete(7, 123, "1/2/2022", 4000);
         Tiquete tiquete2 = new Tiquete(2, 456, "5/6/2005", 2000);

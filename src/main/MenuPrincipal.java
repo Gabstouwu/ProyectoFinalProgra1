@@ -28,7 +28,8 @@ public class MenuPrincipal {
         ChoferController.cargarDatosChofer();
         UsuarioController.CargarDatosUsuario();
         ViajeController.CargarDatosViaje();
-
+        TiqueteController.CargarDatosTiquete();
+                
         ////Menu
         int opcion;
         do {

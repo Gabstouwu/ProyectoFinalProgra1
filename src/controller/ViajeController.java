@@ -56,7 +56,7 @@ public class ViajeController {
 
         public static void CargarDatosViaje() {
 
-        Viaje usuario1 = new Viaje("123", "Juan", "963","12","ha",548,54);
+        Viaje usuario1 = new Viaje("123", "Juan", "963","12","ha",10,1000);
         Viaje usuario2 = new Viaje("564", "Juan", "963","12","ha",548,54);
         Viaje usuario3 = new Viaje("890", "Juan", "963","12","ha",548,54);
         listaViaje.add(usuario1);
