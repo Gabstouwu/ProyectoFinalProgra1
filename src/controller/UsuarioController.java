@@ -18,10 +18,9 @@ public class UsuarioController {
 
         for (int i = 0; i < ListaUsuario.size(); i++) {
             if (ListaUsuario.get(i).getIdUsuario().equals(idConsultar)) {
-               
-                
+
                 for (Usuario u : ListaUsuario) {//0
-                    System.out.println(u);
+
                 }
 
                 return ListaUsuario.get(i);

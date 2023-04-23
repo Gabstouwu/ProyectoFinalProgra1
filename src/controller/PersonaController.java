@@ -10,101 +10,49 @@ public class PersonaController {
 
     Metodos m = new Metodos();
 
-    public void registrar() {
-        Persona crearPersona = new Persona();
-        try {
+    public static boolean registrar(String id, String nombre, String numero, String correo) {
+        Persona NuevaPersona = new Persona(id, nombre, numero, correo);
+        lista_Persona.add(NuevaPersona);
+        return true;
+    }
 
-            PersonaView persona = new PersonaView();
-            persona.crearPersona();
-            String id = persona.id;
-            String nombre = persona.nombre;
-            String numero = persona.numero;
-            String correo = persona.correo;
-            if (lista_Persona.isEmpty()) {
-                crearPersona.setIdPersona(id);
-                crearPersona.setNombrePersona(nombre);
-                crearPersona.setTelefonoPersona(numero);
-                crearPersona.setCorreo(correo);
-                lista_Persona.add(crearPersona);
-                m.msg("Persona creada satisfactoriamente");
-            } else {
-                if (existe(id)) {
-                    m.msg("Id ya existente, ingrese una persona nueva");
+    public static Persona consultar(String id) {
+        for (int i = 0; i < lista_Persona.size(); i++) {
+            if (lista_Persona.get(i).getIdPersona().equals(id)) {
 
-                } else {
-                    crearPersona.setIdPersona(id);
-                    crearPersona.setNombrePersona(nombre);
-                    crearPersona.setTelefonoPersona(numero);
-                    crearPersona.setCorreo(correo);
-                    lista_Persona.add(crearPersona);
-                    m.msg("Persona creada satisfactoriamente");
+                for (Persona p : lista_Persona) {//0
 
                 }
 
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    public void consultar() {
-
-        if (lista_Persona.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-            PersonaView persona = new PersonaView();
-            persona.Id();
-            String id = persona.id;
-            if (existe(id) && posicion(id) < lista_Persona.size()) {
-
-                m.msg(lista_Persona.get(posicion(id)).toString());
-
-            } else {
-                m.msg("Persona no existe");
+                return lista_Persona.get(i);
             }
         }
+        return null;
 
     }
 
-    public void editar() {
-        if (lista_Persona.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-
-            PersonaView persona = new PersonaView();
-            persona.Id();
-            String id = persona.id;
-
-            if (existe(id) && posicion(id) < lista_Persona.size()) {
-                persona.editarPersona();
-                lista_Persona.get(posicion(id)).setNombrePersona(persona.nombre);
-                lista_Persona.get(posicion(id)).setTelefonoPersona(persona.numero);
-                lista_Persona.get(posicion(id)).setCorreo(persona.correo);
-                m.msg("Modificación realizada con exito.");
-
-            } else {
-                m.msg("No existe el numero de id");
-            }
-
+    public static boolean editar(String idEditar, String nuevoNombre, String nuevoNumero, String nuevoCorreo) {
+        Persona temporal = consultar(idEditar);
+        if (temporal != null) {
+            temporal.setNombrePersona(nuevoNombre);
+            temporal.setTelefonoPersona(nuevoNumero);
+            temporal.setCorreo(nuevoCorreo);
+            return true;
         }
+        return false;
     }
 
-    public void eliminar() {
-        if (lista_Persona.isEmpty()) {
-            m.msg("Aun no hay informacion en la lista");
-        } else {
-            PersonaView persona = new PersonaView();
-            persona.Id();
-            String id = persona.id;
-            if (existe(id) && posicion(id) < lista_Persona.size()) {
+    public static boolean eliminar(String idEliminar) {
 
-                lista_Persona.remove(posicion(id));
-                m.msg("Persona Eliminada\n" + lista_Persona.toString());
-            } else {
-                m.msg("Persona no existe");
+        for (int i = 0; i < lista_Persona.size(); i++) {
+
+            if (lista_Persona.get(i).getIdPersona().equals(idEliminar)) {
+
+                lista_Persona.remove(i);
+                return true;
             }
         }
-
+        return false;
     }
 
     public boolean existe(String id) {
@@ -119,7 +67,7 @@ public class PersonaController {
     }
 
     public int posicion(String id) {
-        int pos = 0;
+        int pos = -1;
         for (Persona personas : lista_Persona) {
             if (personas.getIdPersona().equals(id)) {
                 pos = personas.getIdPersona().indexOf(id);
@@ -128,6 +76,7 @@ public class PersonaController {
         return pos;
     }
 
+<<<<<<< Updated upstream
 //    public static void cargarDatosPersona() {
 //        Persona persona1 = new Persona("123", "Miguel", "12345678", "amanda@gmail.com");
 //        Persona persona2 = new Persona("456", "David", "98765432", "amanda@gmail.com");
@@ -138,4 +87,15 @@ public class PersonaController {
 //        lista_Persona.add(persona3);
 //
 //    }
+=======
+    public static void cargarDatosPersona() {
+        Persona persona1 = new Persona("123", "Miguel", "12345678", "amanda@gmail.com");
+        Persona persona2 = new Persona("456", "David", "98765432", "amanda@gmail.com");
+        Persona persona3 = new Persona("789", "Esteban", "654789123", "amanda@gmail.com");
+
+        lista_Persona.add(persona1);
+        lista_Persona.add(persona2);
+        lista_Persona.add(persona3);
+    }
+>>>>>>> Stashed changes
 }
