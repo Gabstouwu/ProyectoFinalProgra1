@@ -7,8 +7,8 @@ public class UsuarioController {
 
     public static ArrayList<Usuario> ListaUsuario = new ArrayList<>();
 
-    public static boolean registrar(String IdUsuario, String NombreUsuario, String ClaveUsuario) {
-        Usuario NuevoUsuario = new Usuario(NombreUsuario, IdUsuario, ClaveUsuario);
+    public static boolean registrar(String idUsuario, String NombreUsuario, String ClaveUsuario) {
+        Usuario NuevoUsuario = new Usuario(idUsuario, NombreUsuario, ClaveUsuario);
         ListaUsuario.add(NuevoUsuario);
         return true;
     }
@@ -18,6 +18,12 @@ public class UsuarioController {
 
         for (int i = 0; i < ListaUsuario.size(); i++) {
             if (ListaUsuario.get(i).getIdUsuario().equals(idConsultar)) {
+               
+                
+                for (Usuario u : ListaUsuario) {//0
+                    System.out.println(u);
+                }
+
                 return ListaUsuario.get(i);
             }
         }
