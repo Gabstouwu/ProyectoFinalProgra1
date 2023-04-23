@@ -13,7 +13,8 @@ public class VehiculoView {
 
     Metodos m = new Metodos();
 
-    public void MenuVehiculo() {
+    public static void MenuVehiculo() {
+        Metodos m = new Metodos();
         VehiculoController vehiculo = new VehiculoController();
         boolean decision = true;
         int opcion;

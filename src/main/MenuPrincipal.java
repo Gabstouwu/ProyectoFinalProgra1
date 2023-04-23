@@ -13,6 +13,7 @@ import controller.ViajeController;
 import view.ChoferView;
 import static view.ChoferView.MenuChofer;
 import static view.PersonaView.MenuPersonas;
+import static view.TiqueteView.MenuTiquete;
 import static view.UsuarioView.MenuUsuario;
 import static view.VehiculoView.MenuVehiculo;
 import static view.ViajeView.menuViaje;
@@ -21,8 +22,7 @@ public class MenuPrincipal {
 
     public static void main(String[] args) {
         Metodos m = new Metodos();
-
-        //ViajeView viajeview = new ViajeView();
+        
         //// cargar datos preexistentes
         PersonaController.cargarDatosPersona();
         ChoferController.cargarDatosChofer();
@@ -60,9 +60,6 @@ public class MenuPrincipal {
     }
 
     public static void menuAdministrador() {
-        PersonaView persona = new PersonaView();
-        ChoferView choferView = new ChoferView();
-        VehiculoView vehiculo = new VehiculoView();
         Metodos m = new Metodos();
         boolean decision = true;
         int opcion;
@@ -93,7 +90,6 @@ public class MenuPrincipal {
     }
 
     public static void menuVentas() {
-        TiqueteController ventas = new TiqueteController();
         Metodos m = new Metodos();
         boolean decision = true;
         int opcion;
@@ -105,7 +101,7 @@ public class MenuPrincipal {
                     menuViaje();
                     break;
                 case 1:
-//                    MenuTiquete();
+                    MenuTiquete();
                     break;
                 case 2:
                     decision = false;

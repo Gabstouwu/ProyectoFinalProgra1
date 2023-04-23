@@ -3,19 +3,20 @@ package controller;
 import java.util.ArrayList;
 import modelo.Chofer;
 import view.ChoferView;
-
+import controller.Metodos;
 
 public class ChoferController {
 
     public static ArrayList<Chofer> lista_Chofer = new ArrayList();
-   
+    Metodos m = new Metodos();
 
-    public static boolean registrar(String idChofer, String fechaVencimiento) {
+     public static boolean registrar(String idChofer, String fechaVencimiento) {
         Chofer NuevoChofer = new Chofer(idChofer, fechaVencimiento);
         lista_Chofer.add(NuevoChofer);
-        
+
         return true;
     }
+
 
     public static Chofer consultar(String idConsultar) {
         for (int i = 0; i < lista_Chofer.size(); i++) {
@@ -35,7 +36,7 @@ public class ChoferController {
         Chofer temporal = consultar(idEditar);
         if (temporal != null) {
             temporal.setVencimientoLicencia(Fecha);
-            
+
             return true;
         }
         return false;

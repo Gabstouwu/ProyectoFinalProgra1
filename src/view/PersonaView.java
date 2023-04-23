@@ -8,7 +8,7 @@ public class PersonaView {
 
     static Metodos m = new Metodos();
 
-    public void MenuPersonas() {
+    public static void MenuPersonas() {
         PersonaController personas = new PersonaController();
 
         boolean decision = true;
@@ -56,7 +56,7 @@ public class PersonaView {
 
     }
 
-    public void consultarPersona() {
+    public static void consultarPersona() {
         String idConsultar = m.getCadena("Digite el id de la persona a consultar");//Input del id;
 
         Persona personaConsultada = PersonaController.consultar(idConsultar);
@@ -68,7 +68,7 @@ public class PersonaView {
         }
     }
 
-    public void editarPersona() {
+    public static void editarPersona() {
         String idEditar = m.getCadena("Digite el id de la persona a editar: ");
         String nuevoNombre = m.getCadena("Digite el Nuevo nombre para la persona: ");
         String nuevoNumero = m.getCadena("Digite el nuevo numero: ");
@@ -83,7 +83,7 @@ public class PersonaView {
         }
     }
 
-    public void eliminarPersona() {
+    public static void eliminarPersona() {
         String idConsultar = m.getCadena("Digite el id del usuario a eliminar\nEs una seleccion permanente.");//Input del id;
 
         boolean eliminado = PersonaController.eliminar(idConsultar);

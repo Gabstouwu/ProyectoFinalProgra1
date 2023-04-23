@@ -15,7 +15,7 @@ public class ViajeView {
         int opcion;
         String[] opciones = {"Registrar", "Consultar", "Editar", "Elmininar", "Salir"};
         while (decision == true) {
-            opcion = m.menuBotones("Elija una Opcion", "Elija una opcion:", opciones, "Crear");
+            opcion = m.menuBotones("Elija una Opcion", "Sub menu Viaje:", opciones, "Crear");
             switch (opcion) {
                 case 0:
                     ViajeView.registrarMenu();
