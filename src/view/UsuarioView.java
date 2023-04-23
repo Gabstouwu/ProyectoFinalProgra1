@@ -38,7 +38,6 @@ public class UsuarioView {
         String idUsuario = JOptionPane.showInputDialog(null, "Ingrese un Id de usuario:");//Acá pido id;
         String nombreUsuario = JOptionPane.showInputDialog(null, "Ingrese un nombre de usuario:");//
         String claveUsuario = JOptionPane.showInputDialog(null, "Ingrese contraseña:");
-        UsuarioController.registrar(idUsuario, nombreUsuario, claveUsuario);
 
         if (UsuarioController.registrar(idUsuario, nombreUsuario, claveUsuario)) {
             JOptionPane.showMessageDialog(null, "Su usuario fue registrado correctamente.");
@@ -71,7 +70,7 @@ public class UsuarioView {
 
         if (eliminado == true) {
             JOptionPane.showMessageDialog(null, "Usuario encontrado, se elimino con exito");
-        } else {
+        } if (eliminado== false) {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado, porfavor comprobar el ID");
         }
 
@@ -79,8 +78,8 @@ public class UsuarioView {
 
     public static void editarUsuario() {
         String idEditar = JOptionPane.showInputDialog(null, "Digite el id del usuario a editar:");//Input del id;
-        String usuarioNuevoInput = JOptionPane.showInputDialog(null, "Digite el id del usuario a editar:");//Input del id;
-        String usuarioNuevaClaveInput = JOptionPane.showInputDialog(null, "Digite el id del usuario a editar:");//Input del id;
+        String usuarioNuevoInput = JOptionPane.showInputDialog(null, "Digite el Nuevo nombre para el Usuario:");//Input del id;
+        String usuarioNuevaClaveInput = JOptionPane.showInputDialog(null, "Digite la nueva contraseña:");//Input del id;
 
         boolean respuestaEdicion = UsuarioController.editar(idEditar, usuarioNuevoInput, usuarioNuevaClaveInput);
 
