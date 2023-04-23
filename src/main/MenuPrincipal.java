@@ -22,24 +22,13 @@ public class MenuPrincipal {
 
     public static void main(String[] args) {
         Metodos m = new Metodos();
-        
+
         //ViajeView viajeview = new ViajeView();
         //// cargar datos preexistentes
-<<<<<<< Updated upstream
-=======
-
-//        PersonaController.cargarDatosPersona();
-//        ChoferController.cargarDatosChofer();
-//        UsuarioController.CargarDatosUsuario();
-//        ViajeController.CargarDatosViaje();
-
-
-
         PersonaController.cargarDatosPersona();
         ChoferController.cargarDatosChofer();
         UsuarioController.CargarDatosUsuario();
         ViajeController.CargarDatosViaje();
-
 
         ////Menu
         int opcion;
@@ -69,9 +58,7 @@ public class MenuPrincipal {
 
             }
         } while (opcion != 3);
-    }   
-        
-        
+    }
 
     public static void menuAdministrador() {
         PersonaView persona = new PersonaView();
@@ -82,7 +69,7 @@ public class MenuPrincipal {
         int opcion;
         String[] opciones = {"Personas", "Usuarios", "Choferes", "Vehiculos", "volver"};
         while (decision == true) {
-            opcion = m.menuBotones("Elija una opcion:","Sub menu Administrador", opciones, "Crear");
+            opcion = m.menuBotones("Elija una opcion:", "Sub menu Administrador", opciones, "Crear");
             switch (opcion) {
                 case 0:
                     MenuPersonas();
@@ -113,7 +100,7 @@ public class MenuPrincipal {
         int opcion;
         String[] opciones = {"Viaje", "Tiquete", "volver"};
         while (decision == true) {
-            opcion = m.menuBotones("Elija una opcion:","Sub menu Ventas", opciones, "Crear");
+            opcion = m.menuBotones("Elija una opcion:", "Sub menu Ventas", opciones, "Crear");
             switch (opcion) {
                 case 0:
                     menuViaje();
