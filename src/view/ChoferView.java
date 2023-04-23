@@ -8,7 +8,7 @@ public class ChoferView {
     public String id;
     public String fechaVencimiento;
     static Metodos m = new Metodos();
-    public void MenuChofer() {
+    public static void MenuChofer() {
     ChoferController chofer = new ChoferController();
     
         boolean decision = true;

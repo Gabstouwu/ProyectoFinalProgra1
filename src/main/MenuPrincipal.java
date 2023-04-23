@@ -12,16 +12,17 @@ import controller.TiqueteController;
 import controller.UsuarioController;
 import controller.ViajeController;
 import view.ChoferView;
-import view.ViajeView;
+import static view.ChoferView.MenuChofer;
+import static view.PersonaView.MenuPersonas;
+import static view.UsuarioView.MenuUsuario;
+import static view.VehiculoView.MenuVehiculo;
+import static view.ViajeView.menuViaje;
 
 public class MenuPrincipal {
 
     public static void main(String[] args) {
         Metodos m = new Metodos();
-        PersonaView persona = new PersonaView();
-        VehiculoView vehiculo = new VehiculoView(); 
-        TiqueteController ventas = new TiqueteController();
-        ChoferView choferView = new ChoferView();
+        
         //ViajeView viajeview = new ViajeView();
         //// cargar datos preexistentes
 
@@ -29,8 +30,6 @@ public class MenuPrincipal {
         ChoferController.cargarDatosChofer();
         UsuarioController.CargarDatosUsuario();
         ViajeController.CargarDatosViaje();
-        
-
 
         ////Menu
         int opcion;
@@ -38,13 +37,9 @@ public class MenuPrincipal {
             try {
                 opcion = m.getEntero(
                         "MENU PRNCIPAL\n"
-                        + "1. Personas\n"
-                        + "2. Vehiculo\n"
-                        + "3. Ventas\n"
-                        + "4. Usuario\n"
-                        + "5. Chofer \n"
-                        + "6. Viajes \n"
-                        + "7. Salir\n"      
+                        + "1. Administrador\n"
+                        + "2. Ventas\n"
+                        + "3. Salir\n"
                         + "Elija una opción:");
             } catch (Exception e) {
                 opcion = 0;
@@ -52,29 +47,77 @@ public class MenuPrincipal {
 
             switch (opcion) {
                 case 1:
-                    persona.MenuPersonas();
+                    menuAdministrador();
                     break;
                 case 2:
-                    vehiculo.MenuVehiculo();
+                    menuVentas();
                     break;
                 case 3:
-                    ventas.MenuTiquete();
-                    break;
-                case 4:
-                    UsuarioView.MenuUsuario();
-                    break;
-                case 5:
-                    choferView.MenuChofer();
-                    break;
-                 case 6:
-                    ViajeView.menuViaje();
-                    break;
-                case 7:
                     m.msg("Gracias por usar el sistema, vuelva pronto...");
                     break;
                 default:
 
             }
-        } while (opcion != 7);
+        } while (opcion != 3);
+    }   
+        
+        
+
+    public static void menuAdministrador() {
+        PersonaView persona = new PersonaView();
+        ChoferView choferView = new ChoferView();
+        VehiculoView vehiculo = new VehiculoView();
+        Metodos m = new Metodos();
+        boolean decision = true;
+        int opcion;
+        String[] opciones = {"Personas", "Usuarios", "Choferes", "Vehiculos", "volver"};
+        while (decision == true) {
+            opcion = m.menuBotones("Elija una opcion:","Sub menu Administrador", opciones, "Crear");
+            switch (opcion) {
+                case 0:
+                    MenuPersonas();
+                    break;
+                case 1:
+                    MenuUsuario();
+                    break;
+                case 2:
+                    MenuChofer();
+                    break;
+                case 3:
+                    MenuVehiculo();
+                    break;
+                case 4:
+                    decision = false;
+                    break;
+
+            }
+
+        }
+
+    }
+
+    public static void menuVentas() {
+        TiqueteController ventas = new TiqueteController();
+        Metodos m = new Metodos();
+        boolean decision = true;
+        int opcion;
+        String[] opciones = {"Viaje", "Tiquete", "volver"};
+        while (decision == true) {
+            opcion = m.menuBotones("Elija una opcion:","Sub menu Ventas", opciones, "Crear");
+            switch (opcion) {
+                case 0:
+                    menuViaje();
+                    break;
+                case 1:
+//                    MenuTiquete();
+                    break;
+                case 2:
+                    decision = false;
+                    break;
+
+            }
+
+        }
+
     }
 }
