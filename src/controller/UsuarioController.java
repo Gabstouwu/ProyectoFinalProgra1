@@ -53,14 +53,14 @@ public class UsuarioController {
         return false;
     }
 
-//    public static void CargarDatosUsuario() {
-//
-//        Usuario usuario1 = new Usuario("123", "Juan", "963");
-//        Usuario usuario2 = new Usuario("456", "Maria", "852");
-//        Usuario usuario3 = new Usuario("789", "Luis", "741");
-//        ListaUsuario.add(usuario1);
-//        ListaUsuario.add(usuario2);
-//        ListaUsuario.add(usuario3);
-//
-//    }
+    public static void CargarDatosUsuario() {
+
+        Usuario usuario1 = new Usuario("123", "Juan", "963");
+        Usuario usuario2 = new Usuario("456", "Maria", "852");
+        Usuario usuario3 = new Usuario("789", "Luis", "741");
+        ListaUsuario.add(usuario1);
+        ListaUsuario.add(usuario2);
+        ListaUsuario.add(usuario3);
+
+    }
 }

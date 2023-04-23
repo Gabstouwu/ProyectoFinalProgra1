@@ -118,13 +118,13 @@ public class ChoferController {
         return pos;
     }
 
-//    public static void cargarDatosChofer() {
-//        Chofer Chofer1 = new Chofer("123", "25/11/2020");
-//        Chofer Chofer2 = new Chofer("456", "25/11/2020");
-//        Chofer Chofer3 = new Chofer("456", "25/11/2020");
-//        lista_Chofer.add(Chofer1);
-//        lista_Chofer.add(Chofer2);
-//        lista_Chofer.add(Chofer3);
-//
-//    }
+    public static void cargarDatosChofer() {
+       Chofer Chofer1 = new Chofer("123", "25/11/2020");
+        Chofer Chofer2 = new Chofer("456", "25/11/2020");
+        Chofer Chofer3 = new Chofer("456", "25/11/2020");
+       lista_Chofer.add(Chofer1);
+        lista_Chofer.add(Chofer2);
+        lista_Chofer.add(Chofer3);
+
+    }
 }

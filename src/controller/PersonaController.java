@@ -76,18 +76,9 @@ public class PersonaController {
         return pos;
     }
 
-<<<<<<< Updated upstream
-//    public static void cargarDatosPersona() {
-//        Persona persona1 = new Persona("123", "Miguel", "12345678", "amanda@gmail.com");
-//        Persona persona2 = new Persona("456", "David", "98765432", "amanda@gmail.com");
-//        Persona persona3 = new Persona("789", "Esteban", "654789123", "amanda@gmail.com");
-//
-//        lista_Persona.add(persona1);
-//        lista_Persona.add(persona2);
-//        lista_Persona.add(persona3);
-//
-//    }
-=======
+
+
+
     public static void cargarDatosPersona() {
         Persona persona1 = new Persona("123", "Miguel", "12345678", "amanda@gmail.com");
         Persona persona2 = new Persona("456", "David", "98765432", "amanda@gmail.com");
@@ -97,5 +88,5 @@ public class PersonaController {
         lista_Persona.add(persona2);
         lista_Persona.add(persona3);
     }
->>>>>>> Stashed changes
+
 }
