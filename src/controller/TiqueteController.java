@@ -17,14 +17,11 @@ public class TiqueteController { // implements Crudinterfaces {
 
     ArrayList<Viaje> listaViaje = ViajeController.listaViaje;
     ArrayList<Vehiculo> listaVehiculo = VehiculoController.lista_V;
-    public static class GeneradorID {
-
-        private static int ultimoID = 0;
-
-        public static int generarID() {
-            ultimoID++;
-            return ultimoID;
-        }
+        static int ultimoID = -1;
+    public static int generarID() {
+        
+        ultimoID++;
+        return ultimoID;
     }
 
     public static int buscarPrecio(String idViaje) {
@@ -49,10 +46,12 @@ public class TiqueteController { // implements Crudinterfaces {
         double precioIVA = busquedaPrecio + (busquedaPrecio * IVA);
         double preciototal = precioIVA * cantidadPersona;
 
-        int idgenerado = GeneradorID.generarID();
+        int idgenerado = generarID();
 
         Tiquete NuevaVenta = new Tiquete(cantidadPersona, idgenerado, fechaVenta, preciototal);
+        
         ListaVentas.add(NuevaVenta);
+        System.out.println(ListaVentas);
         return true;
 
     }
@@ -60,7 +59,7 @@ public class TiqueteController { // implements Crudinterfaces {
     public static Tiquete consultar(int idEncontrarViaje) {
 
         for (int i = 0; i < ListaVentas.size(); i++) {
-            if (ListaVentas.get(i).getIdViaje() == (idEncontrarViaje)) {
+            if (ListaVentas.get(i).getIdViaje() == idEncontrarViaje) {
 
                 for (Tiquete u : ListaVentas) {
                     System.out.println(u);
@@ -75,13 +74,12 @@ public class TiqueteController { // implements Crudinterfaces {
 
     public static Tiquete informe() {
 
-        
         return null;
 
-        
     }
-     public static boolean eliminar(String idEliminar) {
-         int idEli = Integer.parseInt(idEliminar);
+
+    public static boolean eliminar(String idEliminar) {
+        int idEli = Integer.parseInt(idEliminar);
         for (int i = 0; i < ListaVentas.size(); i++) {
 
             if (ListaVentas.get(i).getIdViaje() == idEli) {

@@ -13,7 +13,7 @@ public class TiqueteView {
     public static void MenuTiquete() {
 
         Metodos metodos = new Metodos();
-        String[] opciones = {"Registrar una venta", "Consultar una venta", "Editar una venta", "Anular una Venta", "Generar una venta", "Volver"};
+        String[] opciones = {"Registrar una venta", "Consultar una venta", "Anular una Venta", "Generar una venta", "Volver"};
 
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -45,7 +45,7 @@ public class TiqueteView {
         int inputCantidadPersonas = Integer.parseInt(inputCantidadPersonasString);
         String inputfecha = JOptionPane.showInputDialog(null, "Ingrese la fecha de hoy:");
 
-        int idgenerado= TiqueteController.GeneradorID.generarID();
+        int idgenerado= TiqueteController.generarID()+1;
         
         
         if (TiqueteController.GenerarVenta(inputIdViaje, inputCantidadPersonas, inputfecha)) {
@@ -70,9 +70,9 @@ public class TiqueteView {
         
         if (Consultado != null) {
 
-            JOptionPane.showMessageDialog(null, "Usuario encontrado:\n " + Consultado);
+            JOptionPane.showMessageDialog(null, "Venta encontrado:\n " + Consultado);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
+            JOptionPane.showMessageDialog(null, "Venta no encontrado.");
         }
     }
      public static void generarInforme() {
