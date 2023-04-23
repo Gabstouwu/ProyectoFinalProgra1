@@ -9,7 +9,6 @@ public class ChoferView {
     static Metodos m = new Metodos();
 
     public static void MenuChofer() {
-    
 
         boolean decision = true;
         int opcion;
@@ -50,7 +49,6 @@ public class ChoferView {
             m.msg("Error al registrar el chofer.");
 
         }
-
     }
 
     public static void consultarChofer() {
@@ -66,9 +64,9 @@ public class ChoferView {
     }
 
     public static void editarChofer() {
-          String idEditar = m.getCadena("Digite el id del chofer a editar:");//Input del id;
+         String idEditar = m.getCadena("Digite el id del chofer a editar:");//Input del id;
         String nuevaFecha = m.getCadena("Digite la nueva fecha de vencimiento:");//Input del id;
-        
+
 
         boolean respuestaEdicion = ChoferController.editar(idEditar, nuevaFecha);
 
@@ -78,16 +76,18 @@ public class ChoferView {
             m.msg("Chofer no encontrado, porfavor comprobar el ID");
         }
 
+
     }
 
     public static void eliminarChofer() {
-         String idConsultar = m.getCadena("Digite el id del chofer a eliminar\nEs una seleccion permanente.");//Input del id;
+        String idConsultar = m.getCadena("Digite el id del chofer a eliminar\nEs una seleccion permanente.");//Input del id;
 
         boolean eliminado = ChoferController.eliminar(idConsultar);
 
         if (eliminado == true) {
             m.msg("Chofer encontrado, se elimino con exito");
-        } if (eliminado== false) {
+        }
+        if (eliminado == false) {
             m.msg("Chofer no encontrado, porfavor comprobar el ID");
         }
     }
