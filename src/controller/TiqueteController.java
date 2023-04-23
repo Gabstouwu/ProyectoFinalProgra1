@@ -4,6 +4,7 @@ package controller;
 //import static controller.UsuarioController.ListaUsuario;
 import java.util.ArrayList;
 import modelo.Tiquete;
+import modelo.Vehiculo;
 import modelo.Viaje;
 //import modelo.Usuario;
 //import modelo.Vehiculo;
@@ -15,8 +16,7 @@ public class TiqueteController { // implements Crudinterfaces {
     public static ArrayList<Tiquete> ListaVentas = new ArrayList<>();
 
     ArrayList<Viaje> listaViaje = ViajeController.listaViaje;
-//   
-
+    ArrayList<Vehiculo> listaVehiculo = VehiculoController.lista_V;
     public static class GeneradorID {
 
         private static int ultimoID = 0;
@@ -41,13 +41,13 @@ public class TiqueteController { // implements Crudinterfaces {
 
 //////////////////////////
     public static boolean GenerarVenta(String idviaje, int cantidadPersona, String fechaVenta) {
-
-//        int resultadoPersonas = buscarCantidadPersonas(idviaje);
-//        int calculoPersona = resultadoPersonas - cantidadPersona;
-
+        Viaje viajeEncontrado = ViajeController.consultar(idviaje);
+        int resultadoPersonas = buscarCantidadPersonas(idviaje);
+        int calculoPersona = resultadoPersonas - cantidadPersona;
+        viajeEncontrado.setCapacidadPasajeros(calculoPersona);
         int busquedaPrecio = buscarPrecio(idviaje);
         double precioIVA = busquedaPrecio + (busquedaPrecio * IVA);
-        double preciototal = precioIVA*cantidadPersona;
+        double preciototal = precioIVA * cantidadPersona;
 
         int idgenerado = GeneradorID.generarID();
 
@@ -60,7 +60,7 @@ public class TiqueteController { // implements Crudinterfaces {
     public static Tiquete consultar(int idEncontrarViaje) {
 
         for (int i = 0; i < ListaVentas.size(); i++) {
-            if (ListaVentas.get(i).getIdViaje()==(idEncontrarViaje)) {
+            if (ListaVentas.get(i).getIdViaje() == (idEncontrarViaje)) {
 
                 for (Tiquete u : ListaVentas) {
                     System.out.println(u);
@@ -72,61 +72,26 @@ public class TiqueteController { // implements Crudinterfaces {
         return null;
 
     }
-//
-////    @Override
-////    public boolean editar() {
-////
-//////        String inputParaBuscar = "123";
-//////
-//////        int indexId = -1;
-//////
-//////        if (indexId != -1) {
-//////            String CodigoNuevo;
-//////            String IdNueva;
-//////            String NuevaFecha;
-//////
-//////            CodigoNuevo = "Mario";
-//////            IdNueva = "951";
-//////            NuevaFecha = "14/3/2002";
-//////
-//////            for (int i = 0; i < ListaVentas.size(); i++) {
-//////                if (ListaVentas.get(i).getIdViaje().equals(inputParaBuscar)) {
-//////
-//////                    ListaVentas.get(indexId).setCantidadPersonas(CodigoNuevo);
-//////                    ListaVentas.get(indexId).setIdViaje(IdNueva);
-//////                    ListaVentas.get(indexId).setFechaDeVenta(NuevaFecha);
-//////                    return true;
-//////                }
-//////            }
-//////
-//////            System.out.println("Modificación realizada con exito.");
-//////        }
-//////        System.out.println("ID no existente");
-//////        return false;
-////
-////    }
-//////    @Override
-////    public boolean eliminar(String idEliminar) {
-////
-//////        idEliminar = "123";
-//////
-//////        for (int i = 0; i < ListaVentas.size(); i++) {
-//////
-//////            if (ListaVentas.get(i).getIdViaje().equals(idEliminar)) {
-//////
-//////                ListaVentas.remove(i);
-//////                System.out.println("Eliminar realizado con exito.");
-//////                return true;
-//////            }
-//////        }
-//////
-//////        System.out.println("No se encontro.");
-//////
-//////        return false;
-////    }
-//    public void generarInforme() {
-//
-//    }
+
+    public static Tiquete informe() {
+
+        
+        return null;
+
+        
+    }
+     public static boolean eliminar(String idEliminar) {
+         int idEli = Integer.parseInt(idEliminar);
+        for (int i = 0; i < ListaVentas.size(); i++) {
+
+            if (ListaVentas.get(i).getIdViaje() == idEli) {
+
+                ListaVentas.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void CargarDatosTiquete() {
 

@@ -26,6 +26,7 @@ public class TiqueteView {
                     TiqueteView.consultarVenta();
                     break;
                 case 2:
+                    TiqueteView.eliminarVenta();
                     break;
                 case 3:
                     break;
@@ -73,6 +74,36 @@ public class TiqueteView {
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
         }
+    }
+     public static void generarInforme() {
+
+        String idConsultar = JOptionPane.showInputDialog(null, "Digite el id del viaje para generar informe");//Input del id;
+
+        int idConsulta = Integer.parseInt(idConsultar);
+
+        Tiquete Consultado = TiqueteController.consultar(idConsulta);
+
+        
+        
+        if (Consultado != null) {
+
+            JOptionPane.showMessageDialog(null, "Usuario encontrado:\n " + Consultado);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
+        }
+    }
+      public static void eliminarVenta() {
+
+        String idConsultar = JOptionPane.showInputDialog(null, "Digite el id de la venta a eliminar\nEs una seleccion permanente.");//Input del id;
+
+        boolean eliminado = TiqueteController.eliminar(idConsultar);
+
+        if (eliminado == true) {
+            JOptionPane.showMessageDialog(null, "Venta encontrada, se elimino con exito");
+        } if (eliminado== false) {
+            JOptionPane.showMessageDialog(null, "Venta no encontrada, porfavor comprobar el ID");
+        }
+
     }
 
 }
