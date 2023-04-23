@@ -53,29 +53,7 @@ public class ViajeController {
         }
         return false;
     }
-//    
-//    
-//     public boolean existe(String idViaje) {
-//        boolean valor = false;
-//        for (Viaje vehiculo : listaViaje) {
-//            if (vehiculo.getIdViaje().equals(idViaje)) {
-//                valor = true;
-//            }
-//        }
-//
-//        return valor;
-//    }
-//        
-//        public int posicion(String idViaje){
-//    int pos=0;
-//    for (Viaje viaje : listaViaje) {
-//            if (viaje.getIdViaje().equals(idViaje)) {
-//                pos = viaje.getIdViaje().indexOf(idViaje);
-//            }
-//        }
-//    return pos;
-//    }
-        
+
         public static void CargarDatosViaje() {
 
         Viaje usuario1 = new Viaje("123", "Juan", "963","12","ha",548,54);

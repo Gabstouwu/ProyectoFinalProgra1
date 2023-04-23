@@ -35,9 +35,9 @@ public class UsuarioView {
     }
 
     public static void registrarMenu() {
-        String idUsuario = JOptionPane.showInputDialog(null, "Ingrese un Id de usuario:");//Acá pido id;
-        String nombreUsuario = JOptionPane.showInputDialog(null, "Ingrese un nombre de usuario:");//
-        String claveUsuario = JOptionPane.showInputDialog(null, "Ingrese contraseña:");
+        String idUsuario = JOptionPane.showInputDialog(null, "Ingrese Id del viaje al que desea ir");//se pide el id;
+        String nombreUsuario = JOptionPane.showInputDialog(null, "Ingrese la cantidad de tiquetes a comprar:");//
+        String claveUsuario = JOptionPane.showInputDialog(null, "Ingrese la fecha en que se compro los tiquetes:");
 
         if (UsuarioController.registrar(idUsuario, nombreUsuario, claveUsuario)) {
             JOptionPane.showMessageDialog(null, "Su usuario fue registrado correctamente.");

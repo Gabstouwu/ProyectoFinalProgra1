@@ -2,30 +2,34 @@ package modelo;
 
 public class Tiquete {
 
-    private String CantidadPersonas;
-    private String IdViaje;
+    private int CantidadPersonas;
+    private int IdViaje;
     private String FechaDeVenta;
+    private double PrecioDeLaVenta;
 
-    public Tiquete(String CantidadPersonas, String IdViaje, String FechaDeVenta) {
+    public Tiquete() {
+    }
 
+    public Tiquete(int CantidadPersonas, int IdViaje, String FechaDeVenta, double PrecioDeLaVenta) {
         this.CantidadPersonas = CantidadPersonas;
         this.IdViaje = IdViaje;
         this.FechaDeVenta = FechaDeVenta;
+        this.PrecioDeLaVenta = PrecioDeLaVenta;
     }
 
-    public String getCantidadPersonas() {
+    public int getCantidadPersonas() {
         return CantidadPersonas;
     }
 
-    public void setCantidadPersonas(String CantidadPersonas) {
+    public void setCantidadPersonas(int CantidadPersonas) {
         this.CantidadPersonas = CantidadPersonas;
     }
 
-    public String getIdViaje() {
+    public int getIdViaje() {
         return IdViaje;
     }
 
-    public void setIdViaje(String IdViaje) {
+    public void setIdViaje(int IdViaje) {
         this.IdViaje = IdViaje;
     }
 
@@ -37,9 +41,17 @@ public class Tiquete {
         this.FechaDeVenta = FechaDeVenta;
     }
 
+    public double getPrecioDeLaVenta() {
+        return PrecioDeLaVenta;
+    }
+
+    public void setPrecioDeLaVenta(double PrecioDeLaVenta) {
+        this.PrecioDeLaVenta = PrecioDeLaVenta;
+    }
+
     @Override
     public String toString() {
-        return "Tiquete{" + "CantidadPersonas=" + CantidadPersonas + ", IdViaje=" + IdViaje + ", FechaDeVenta=" + FechaDeVenta + '}';
+        return "Tiquete{" + "CantidadPersonas=" + CantidadPersonas + ", IdViaje=" + IdViaje + ", FechaDeVenta=" + FechaDeVenta + ", PrecioDeLaVenta=" + PrecioDeLaVenta + '}';
     }
 
 }
